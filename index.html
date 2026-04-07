@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IVRI - עברי 🎉</title>
+<title>IVRI - עברי ⚽🔥</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background: linear-gradient(135deg, #0a1628, #1a2744, #0d1f3c);
   font-family: 'Segoe UI', Tahoma, sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
@@ -19,19 +19,26 @@ body {
   padding: 30px 15px;
 }
 
-.snow { position: fixed; top: -10px; color: #fff; font-size: 1.2em; animation: fall linear infinite; opacity: 0.8; z-index: 0; pointer-events: none; }
-@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+/* Floating sport balls instead of snow */
+.sport-float {
+  position: fixed; top: -40px;
+  font-size: 1.4em;
+  animation: sportFall linear infinite;
+  z-index: 0; pointer-events: none;
+  opacity: 0.6;
+}
+@keyframes sportFall { to { transform: translateY(110vh) rotate(720deg); } }
 
 .card {
   position: relative;
   z-index: 1;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.06);
   backdrop-filter: blur(20px);
   border-radius: 24px;
   padding: 35px 40px;
   text-align: center;
-  border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
   animation: cardIn 0.8s ease-out;
   max-width: 500px;
   width: 100%;
@@ -41,387 +48,379 @@ body {
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-.emoji-row { font-size: 2.5em; margin-bottom: 8px; animation: bounce 2s ease-in-out infinite; }
-@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.top-icons { font-size: 2.5em; margin-bottom: 8px; animation: bounce 2s ease-in-out infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
 .name {
-  font-size: 4em;
+  font-size: 4.2em;
   font-weight: 900;
-  background: linear-gradient(135deg, #f5af19, #f12711, #f5af19);
+  background: linear-gradient(135deg, #00d4ff, #fff, #00d4ff);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient 3s ease infinite;
   margin: 5px 0;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
+  text-shadow: 0 0 30px rgba(0,212,255,0.3);
 }
 @keyframes gradient { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
 .name-he { font-size: 2.8em; color: #fff; font-weight: 300; opacity: 0.9; margin-bottom: 8px; }
 
-.info { color: rgba(255,255,255,0.6); font-size: 0.95em; margin-bottom: 12px; line-height: 1.8; }
-.info .highlight { color: #f5af19; font-weight: 600; }
+.tagline {
+  font-size: 1.1em;
+  color: #00d4ff;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
 
-.subtitle { font-size: 1.2em; color: rgba(255,255,255,0.7); margin-top: 5px; }
+.info { color: rgba(255,255,255,0.55); font-size: 0.9em; margin-bottom: 12px; line-height: 1.8; }
+.info .highlight { color: #00d4ff; font-weight: 600; }
 
-.cool-badges { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin: 12px 0; }
+/* Stats bar - like a player card */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+.stat {
+  text-align: center;
+}
+.stat-value {
+  font-size: 1.8em;
+  font-weight: 900;
+  color: #fff;
+}
+.stat-label {
+  font-size: 0.7em;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cool-badges { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin: 15px 0; }
 .badge {
-  display: inline-block; padding: 5px 12px;
-  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 20px; color: rgba(255,255,255,0.8); font-size: 0.8em;
+  display: inline-block; padding: 6px 14px;
+  background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 20px; color: rgba(255,255,255,0.85); font-size: 0.8em;
   animation: badgeIn 0.6s ease-out backwards;
 }
-.badge:nth-child(1) { animation-delay: 0.3s; }
-.badge:nth-child(2) { animation-delay: 0.4s; }
-.badge:nth-child(3) { animation-delay: 0.5s; }
-.badge:nth-child(4) { animation-delay: 0.6s; }
-.badge:nth-child(5) { animation-delay: 0.7s; }
-.badge:nth-child(6) { animation-delay: 0.8s; }
+.badge:nth-child(1) { animation-delay: 0.2s; }
+.badge:nth-child(2) { animation-delay: 0.3s; }
+.badge:nth-child(3) { animation-delay: 0.4s; }
+.badge:nth-child(4) { animation-delay: 0.5s; }
+.badge:nth-child(5) { animation-delay: 0.6s; }
+.badge:nth-child(6) { animation-delay: 0.7s; }
+.badge:nth-child(7) { animation-delay: 0.8s; }
 @keyframes badgeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Tooth fairy quiz */
-.fairy-quiz {
-  margin-top: 20px;
-  z-index: 1;
-  position: relative;
-  max-width: 500px;
-  width: 100%;
-}
-.fairy-bubble {
-  background: rgba(245,208,254,0.1);
-  border: 1px solid rgba(245,208,254,0.25);
-  border-radius: 20px;
-  padding: 25px;
-  margin-bottom: 15px;
-  animation: fadeUp 0.6s ease-out;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fairy-header {
-  font-size: 1.8em;
-  margin-bottom: 8px;
-}
-.fairy-intro {
-  color: #f5d0fe;
-  font-size: 1em;
-  margin-bottom: 18px;
-  line-height: 1.6;
-}
-.question-card {
-  background: rgba(255,255,255,0.06);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.3s;
-}
-.question-card.answered { border-color: rgba(245,175,25,0.4); }
-.question-label {
-  color: #f5d0fe;
-  font-size: 0.95em;
-  margin-bottom: 10px;
-  display: block;
-}
-.question-num {
-  display: inline-block;
-  background: rgba(245,175,25,0.3);
-  color: #f5af19;
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  font-size: 0.8em;
-  line-height: 24px;
-  text-align: center;
-  margin-left: 8px;
-}
-.options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-}
-.option-btn {
-  padding: 8px 16px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 12px;
-  color: #fff;
-  font-size: 0.9em;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: inherit;
-}
-.option-btn:hover { background: rgba(245,175,25,0.2); border-color: rgba(245,175,25,0.4); transform: scale(1.05); }
-.option-btn.selected {
-  background: rgba(245,175,25,0.3);
-  border-color: #f5af19;
-  color: #f5af19;
-  font-weight: 600;
-}
-.option-btn:disabled { cursor: default; opacity: 0.5; }
-.option-btn.selected:disabled { opacity: 1; }
-
-.fairy-response {
-  margin-top: 8px;
-  padding: 10px;
-  color: #f5d0fe;
-  font-size: 0.85em;
-  animation: fadeUp 0.4s ease-out;
-  line-height: 1.5;
-}
-
-.text-input {
-  width: 100%;
-  padding: 10px 15px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 12px;
-  color: #fff;
-  font-size: 1em;
-  font-family: inherit;
-  text-align: center;
-  outline: none;
-  transition: border-color 0.2s;
-}
-.text-input:focus { border-color: rgba(245,175,25,0.5); }
-.text-input::placeholder { color: rgba(255,255,255,0.3); }
-
-.submit-btn {
-  margin-top: 10px;
-  padding: 8px 20px;
-  background: linear-gradient(135deg, #f5af19, #f12711);
-  border: none;
-  border-radius: 12px;
-  color: #fff;
-  font-size: 0.95em;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-  transition: transform 0.2s, opacity 0.2s;
-}
-.submit-btn:hover { transform: scale(1.05); }
-.submit-btn:disabled { opacity: 0.5; cursor: default; }
-
-/* Final message */
-.final-msg {
-  display: none;
-  margin-top: 20px;
-  z-index: 1;
-  position: relative;
-  max-width: 500px;
-  width: 100%;
-  background: linear-gradient(135deg, rgba(245,175,25,0.15), rgba(241,39,17,0.15));
-  border: 1px solid rgba(245,175,25,0.3);
-  border-radius: 20px;
-  padding: 30px;
-  text-align: center;
-  animation: fadeUp 0.8s ease-out;
-}
-.final-msg h2 { color: #f5af19; font-size: 1.5em; margin-bottom: 10px; }
-.final-msg p { color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 8px; }
-.final-msg .big-emoji { font-size: 3em; margin: 15px 0; }
-.answer-summary { color: rgba(255,255,255,0.6); font-size: 0.85em; margin-top: 12px; text-align: right; }
-.answer-summary div { margin: 4px 0; }
-.answer-summary .label { color: #f5d0fe; }
-
+/* Tooth section - sportier */
 .tooth-section {
-  margin: 15px 0 5px; padding: 12px;
-  background: rgba(255,255,255,0.05); border-radius: 16px;
+  margin: 15px 0 8px; padding: 12px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(255,255,255,0.04));
+  border-radius: 16px;
+  border: 1px solid rgba(0,212,255,0.1);
 }
-.tooth-fairy-icon { font-size: 2em; animation: float 3s ease-in-out infinite; }
+.tooth-fairy-icon { font-size: 1.8em; animation: float 3s ease-in-out infinite; }
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   25% { transform: translateY(-8px) rotate(5deg); }
   75% { transform: translateY(-4px) rotate(-5deg); }
 }
-.tooth-msg { font-size: 1em; color: #f5d0fe; margin-top: 4px; opacity: 0.9; }
-.tooth-count { font-size: 0.8em; color: rgba(255,255,255,0.5); margin-top: 3px; }
-
-.family { margin-top: 15px; font-size: 1.4em; color: rgba(255,255,255,0.8); animation: pulse 2.5s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; } }
-
-.balls { margin-top: 15px; font-size: 2em; }
-.balls span { display: inline-block; animation: spin 3s linear infinite; margin: 0 4px; }
-.balls span:nth-child(2) { animation-delay: 0.5s; animation-duration: 2.5s; }
-.balls span:nth-child(3) { animation-delay: 1s; animation-duration: 2s; }
-@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.tooth-msg { font-size: 0.95em; color: #b8e6ff; margin-top: 4px; }
+.tooth-count { font-size: 0.8em; color: rgba(255,255,255,0.45); margin-top: 3px; }
 
 .birthday-banner {
-  margin-top: 12px; padding: 8px 18px;
-  background: linear-gradient(135deg, rgba(245,175,25,0.2), rgba(241,39,17,0.2));
-  border-radius: 12px; border: 1px solid rgba(245,175,25,0.3);
+  margin-top: 12px; padding: 10px 18px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(0,150,255,0.1));
+  border-radius: 12px; border: 1px solid rgba(0,212,255,0.25);
 }
-.birthday-banner .text { color: #f5d0a9; font-size: 1em; }
-.birthday-banner .age { font-size: 1.8em; margin-top: 2px; }
+.birthday-banner .text { color: #b8e6ff; font-size: 1em; }
+.birthday-banner .age { font-size: 2em; margin-top: 2px; }
 
-.mountain { position: fixed; bottom: 0; left: 0; right: 0; height: 100px; z-index: 0; pointer-events: none; }
-.mountain svg { width: 100%; height: 100%; }
+.family { margin-top: 15px; font-size: 1.3em; color: rgba(255,255,255,0.7); }
+
+.sport-row {
+  margin-top: 15px; font-size: 2em;
+  display: flex; justify-content: center; gap: 12px;
+}
+.sport-row span {
+  display: inline-block;
+  animation: kick 1.5s ease-in-out infinite;
+}
+.sport-row span:nth-child(1) { animation-delay: 0s; }
+.sport-row span:nth-child(2) { animation-delay: 0.3s; }
+.sport-row span:nth-child(3) { animation-delay: 0.6s; }
+.sport-row span:nth-child(4) { animation-delay: 0.9s; }
+.sport-row span:nth-child(5) { animation-delay: 1.2s; }
+@keyframes kick {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.15); }
+}
+
+/* ===== QUIZ ===== */
+.fairy-quiz {
+  margin-top: 20px; z-index: 1; position: relative;
+  max-width: 500px; width: 100%;
+}
+.fairy-bubble {
+  background: rgba(0,212,255,0.06);
+  border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 20px;
+  padding: 25px;
+  animation: fadeUp 0.6s ease-out;
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.fairy-header { font-size: 1.6em; margin-bottom: 8px; color: #fff; }
+.fairy-intro { color: #b8e6ff; font-size: 0.95em; margin-bottom: 18px; line-height: 1.6; }
+
+.question-card {
+  background: rgba(255,255,255,0.04);
+  border-radius: 16px; padding: 18px; margin-bottom: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s;
+}
+.question-card.answered { border-color: rgba(0,212,255,0.35); background: rgba(0,212,255,0.04); }
+.question-label { color: #b8e6ff; font-size: 0.95em; margin-bottom: 10px; display: block; font-weight: 500; }
+.question-num {
+  display: inline-block;
+  background: rgba(0,212,255,0.25); color: #00d4ff;
+  width: 24px; height: 24px; border-radius: 50%;
+  font-size: 0.8em; line-height: 24px; text-align: center; margin-left: 8px;
+}
+.options { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.option-btn {
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px; color: #fff; font-size: 0.9em;
+  cursor: pointer; transition: all 0.2s; font-family: inherit;
+}
+.option-btn:hover { background: rgba(0,212,255,0.15); border-color: rgba(0,212,255,0.4); transform: scale(1.05); }
+.option-btn.selected { background: rgba(0,212,255,0.25); border-color: #00d4ff; color: #00d4ff; font-weight: 600; }
+.option-btn:disabled { cursor: default; opacity: 0.4; }
+.option-btn.selected:disabled { opacity: 1; }
+
+.fairy-response { margin-top: 8px; padding: 10px; color: #b8e6ff; font-size: 0.85em; animation: fadeUp 0.4s ease-out; line-height: 1.5; }
+
+.text-input {
+  width: 100%; padding: 10px 15px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px; color: #fff; font-size: 1em;
+  font-family: inherit; text-align: center; outline: none;
+}
+.text-input:focus { border-color: rgba(0,212,255,0.5); }
+.text-input::placeholder { color: rgba(255,255,255,0.25); }
+
+.submit-btn {
+  margin-top: 10px; padding: 8px 20px;
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  border: none; border-radius: 12px; color: #fff;
+  font-size: 0.95em; font-weight: 600; cursor: pointer;
+  font-family: inherit; transition: transform 0.2s;
+}
+.submit-btn:hover { transform: scale(1.05); }
+.submit-btn:disabled { opacity: 0.5; cursor: default; }
+
+/* Final */
+.final-msg {
+  display: none; margin-top: 20px; z-index: 1; position: relative;
+  max-width: 500px; width: 100%;
+  background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,100,200,0.1));
+  border: 1px solid rgba(0,212,255,0.25);
+  border-radius: 20px; padding: 30px; text-align: center;
+  animation: fadeUp 0.8s ease-out;
+}
+.final-msg h2 { color: #00d4ff; font-size: 1.5em; margin-bottom: 10px; }
+.final-msg p { color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 8px; }
+.final-msg .big-emoji { font-size: 3em; margin: 12px 0; }
+.answer-summary { color: rgba(255,255,255,0.55); font-size: 0.85em; margin-top: 12px; text-align: right; }
+.answer-summary div { margin: 4px 0; }
+.answer-summary .label { color: #b8e6ff; }
+
+/* Field lines decoration */
+.field-line {
+  position: fixed; pointer-events: none; z-index: 0;
+}
+.field-line.top { top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.15), transparent); }
+.field-line.bottom { bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.15), transparent); }
 
 @media (max-width: 520px) {
   .card { padding: 25px 20px; }
-  .name { font-size: 3em; }
+  .name { font-size: 3.2em; }
   .name-he { font-size: 2.2em; }
   .fairy-bubble { padding: 18px; }
+  .stats-bar { gap: 15px; }
 }
 </style>
 </head>
 <body>
 
+<div class="field-line top"></div>
+<div class="field-line bottom"></div>
+
 <div class="card">
-  <div class="emoji-row">⛷️ ⚽ 🏔️ 😎</div>
+  <div class="top-icons">⚽ 🏆 ⛷️ 😎 🦔</div>
   <div class="name">IVRI</div>
   <div class="name-he">עברי</div>
+  <div class="tagline">THE CHAMPION</div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-value">⚽</div><div class="stat-label">כדורגלן</div></div>
+    <div class="stat"><div class="stat-value">⛷️</div><div class="stat-label">גולש</div></div>
+    <div class="stat"><div class="stat-value">💪</div><div class="stat-label">אלוף</div></div>
+    <div class="stat"><div class="stat-value">🔥</div><div class="stat-label">אש</div></div>
+  </div>
+
   <div class="info">
     <span class="highlight">טבעון</span> 🏡<br>
     ✈️ חזר מטיול חלום: 20 יום סקי ברומניה + איטליה!
   </div>
-  <div class="subtitle">!You're awesome</div>
 
   <div class="cool-badges">
     <span class="badge">😎 הכי קול בטבעון</span>
+    <span class="badge">⚽ כדורגלן מטורף</span>
     <span class="badge">🏗️ מגדל פיזה</span>
     <span class="badge">🦔 SONIC</span>
-    <span class="badge">🍫 אוהב שוקולד</span>
-    <span class="badge">🇷🇴🇮🇹 סקי ברומניה + איטליה</span>
+    <span class="badge">🍫 מכור לשוקולד</span>
+    <span class="badge">🇷🇴🇮🇹 רומניה + איטליה</span>
     <span class="badge">👑 אח גדול בנשמה</span>
   </div>
 
   <div class="tooth-section">
     <div class="tooth-fairy-icon">🧚‍♀️ ✨ 🦷🦷🦷</div>
-    <div class="tooth-msg">!פיית השיניים אוהבת אותך</div>
-    <div class="tooth-count">3 שיניים כבר נפלו! אלוף!</div>
+    <div class="tooth-msg">פיית השיניים גאה בך!</div>
+    <div class="tooth-count">3 שיניים נפלו - גיבור אמיתי! 💪</div>
   </div>
 
   <div class="birthday-banner">
-    <div class="text">בקרוב יום הולדת!</div>
-    <div class="age">🎂 6 🎂</div>
+    <div class="text">⏱️ ספירה לאחור ליום הולדת!</div>
+    <div class="age">🏆 6 🏆</div>
   </div>
 
   <div class="family">👨‍👩‍👧‍👦 ענבל, אמיר, עלמא ואח גדול</div>
 
-  <div class="balls">
+  <div class="sport-row">
     <span>⚽</span>
-    <span>🎿</span>
-    <span>⚽</span>
+    <span>🏀</span>
+    <span>⛷️</span>
+    <span>🥊</span>
+    <span>🏆</span>
   </div>
 </div>
 
-<!-- Tooth Fairy Quiz -->
+<!-- Quiz -->
 <div class="fairy-quiz" id="quiz">
   <div class="fairy-bubble">
-    <div class="fairy-header">🧚‍♀️✨ פיית השיניים שואלת!</div>
+    <div class="fairy-header">🧚‍♀️⚡ פיית השיניים שואלת!</div>
     <div class="fairy-intro">
-      היי עברי! 👋<br>
-      אני פיית השיניים! קיבלתי 3 שיניים ממך ועכשיו אני רוצה להכיר אותך טוב יותר...<br>
-      ענה על השאלות שלי! 🪄
+      יו עברי! 👋<br>
+      קיבלתי 3 שיניים ממך - עכשיו תורך לענות!<br>
+      תראה לי מה אתה עשוי 💪🔥
     </div>
 
-    <!-- Q1 -->
+    <!-- Q1: Football -->
     <div class="question-card" id="q1">
-      <div class="question-label"><span class="question-num">1</span> מי שחקן הכדורגל הכי מגניב בעולם? ⚽</div>
+      <div class="question-label"><span class="question-num">1</span> מי שחקן הכדורגל הכי חזק בעולם? ⚽🔥</div>
       <div class="options">
-        <button class="option-btn" onclick="answer(1,this,'מבחר מעולה! הוא באמת קוסם עם הכדור! 🪄⚽')">מסי</button>
-        <button class="option-btn" onclick="answer(1,this,'סיוווו! בחרת באלוף! 💪🔥')">רונאלדו</button>
-        <button class="option-btn" onclick="answer(1,this,'אמבפה! מהיר כמו ברק! ⚡')">אמבפה</button>
-        <button class="option-btn" onclick="answer(1,this,'הבחירה שלך מדליקה! 🌟')">אחר</button>
+        <button class="option-btn" onclick="answer(1,this,'מסי! קוסם עם הרגל! 🪄⚽ הוא מבקיע כמו מכונה!')">מסי 🐐</button>
+        <button class="option-btn" onclick="answer(1,this,'סיוווו! הבחור הזה מכונת גולים! 💪🔥 בחירה של אלוף!')">רונאלדו 💪</button>
+        <button class="option-btn" onclick="answer(1,this,'אמבפה! מהיר כמו ברק! ⚡ אי אפשר לתפוס אותו!')">אמבפה ⚡</button>
+        <button class="option-btn" onclick="answer(1,this,'בחירה מקורית! אתה יודע על כדורגל! 🌟')">מישהו אחר</button>
       </div>
       <div class="fairy-response" id="r1" style="display:none"></div>
     </div>
 
-    <!-- Q2 -->
+    <!-- Q2: Superpower -->
     <div class="question-card" id="q2">
-      <div class="question-label"><span class="question-num">2</span> איזה כוח-על היית רוצה? 💥</div>
+      <div class="question-label"><span class="question-num">2</span> איזה כוח-על היית לוקח? 💥</div>
       <div class="options">
-        <button class="option-btn" onclick="answer(2,this,'וואו! היית עף מעל טבעון! 🦅')">לעוף</button>
-        <button class="option-btn" onclick="answer(2,this,'נעלם! אף אחד לא יתפוס אותך! 👻')">להיעלם</button>
-        <button class="option-btn" onclick="answer(2,this,'סופר כוח! חזק כמו הענק הירוק! 💪')">סופר כוח</button>
-        <button class="option-btn" onclick="answer(2,this,'מהיר כמו סוניק! 🦔💨')">סופר מהירות</button>
+        <button class="option-btn" onclick="answer(2,this,'לעוף מעל טבעון! כמו סופרמן! 🦸‍♂️💨')">לעוף ✈️</button>
+        <button class="option-btn" onclick="answer(2,this,'להיעלם! אף אחד לא יתפוס אותך במחבואים! 👻')">להיעלם 👻</button>
+        <button class="option-btn" onclick="answer(2,this,'חזק כמו האלק! שום דבר לא יעצור אותך! 💪💥')">סופר כוח 💪</button>
+        <button class="option-btn" onclick="answer(2,this,'מהיר כמו סוניק! זזזזזזז! 🦔💨 אין מי שיתפוס!')">סופר מהירות 🦔</button>
       </div>
       <div class="fairy-response" id="r2" style="display:none"></div>
     </div>
 
-    <!-- Q3 -->
+    <!-- Q3: Romania -->
     <div class="question-card" id="q3">
-      <div class="question-label"><span class="question-num">3</span> מה הדבר הכי כיף שעשית ברומניה? 🏔️</div>
+      <div class="question-label"><span class="question-num">3</span> מה הכי שבר ברומניה? 🏔️⛷️</div>
       <div class="options">
-        <button class="option-btn" onclick="answer(3,this,'סקי על השלג! אלוף אמיתי! ⛷️❄️')">סקי</button>
-        <button class="option-btn" onclick="answer(3,this,'כדור שלג! מקווה שלא פגעת באבא 🤣')">כדורי שלג</button>
-        <button class="option-btn" onclick="answer(3,this,'אוכל טעים! השוקולד שם מטורף! 🍫')">אוכל טעים</button>
-        <button class="option-btn" onclick="answer(3,this,'הכל היה מדהים! 🌟')">הכל!</button>
+        <button class="option-btn" onclick="answer(3,this,'סקי! גלשת על השלג כמו אלוף אמיתי! ⛷️🔥')">סקי על השלג ⛷️</button>
+        <button class="option-btn" onclick="answer(3,this,'מלחמת כדורי שלג! מקווה שניצחת! ❄️💪')">כדורי שלג ❄️</button>
+        <button class="option-btn" onclick="answer(3,this,'אוכל! השוקולד ברומניה מטורף! 🍫🤤')">אוכל מטורף 🍫</button>
+        <button class="option-btn" onclick="answer(3,this,'הכל! 20 יום של פעולה נון-סטופ! 🌟🔥')">הכל ביחד! 🔥</button>
       </div>
       <div class="fairy-response" id="r3" style="display:none"></div>
     </div>
 
-    <!-- Q4 -->
+    <!-- Q4: Animal -->
     <div class="question-card" id="q4">
-      <div class="question-label"><span class="question-num">4</span> איזה חיה היית רוצה להיות? 🐾</div>
+      <div class="question-label"><span class="question-num">4</span> איזה חיה הכי דומה לך? 🐾</div>
       <div class="options">
-        <button class="option-btn" onclick="answer(4,this,'מלך החיות! שואג! 🦁👑')">אריה</button>
-        <button class="option-btn" onclick="answer(4,this,'נשר! עף גבוה ורואה הכל! 🦅')">נשר</button>
-        <button class="option-btn" onclick="answer(4,this,'דולפין! שוחה וקופץ מהמים! 🐬')">דולפין</button>
-        <button class="option-btn" onclick="answer(4,this,'בחירה מושלמת! 🔥')">אחר</button>
+        <button class="option-btn" onclick="answer(4,this,'מלך הג׳ונגל! שואג ומפחיד את כולם! 🦁👑')">אריה 🦁</button>
+        <button class="option-btn" onclick="answer(4,this,'זאב! חזק וחכם! רץ עם הלהקה! 🐺💪')">זאב 🐺</button>
+        <button class="option-btn" onclick="answer(4,this,'נשר! עף הכי גבוה ורואה הכל! 🦅⚡')">נשר 🦅</button>
+        <button class="option-btn" onclick="answer(4,this,'כריש! שולט בים! אף אחד לא מתעסק איתך! 🦈🌊')">כריש 🦈</button>
       </div>
       <div class="fairy-response" id="r4" style="display:none"></div>
     </div>
 
-    <!-- Q5 -->
+    <!-- Q5: Best about being 6 -->
     <div class="question-card" id="q5">
-      <div class="question-label"><span class="question-num">5</span> מה הדבר הכי מגניב בלהיות כמעט בן 6? 🎂</div>
+      <div class="question-label"><span class="question-num">5</span> מה הכי אש בלהיות בן 6? 🔥</div>
       <div class="options">
-        <button class="option-btn" onclick="answer(5,this,'נכון! גדלים והולכים! 📏🚀')">שאני כבר גדול</button>
-        <button class="option-btn" onclick="answer(5,this,'כיתה א׳ מחכה לך! תלמד דברים מטורפים! 📚✨')">בקרוב כיתה א׳</button>
-        <button class="option-btn" onclick="answer(5,this,'מסיבה! עוגה! חברים! 🎉🎈')">המסיבה!</button>
-        <button class="option-btn" onclick="answer(5,this,'שיניים חדשות בדרך! פיית השיניים מאשרת! 🧚‍♀️✅')">שיניים חדשות</button>
+        <button class="option-btn" onclick="answer(5,this,'גדול וחזק! כבר כמעט גבר! 📏💪')">שאני גדול 💪</button>
+        <button class="option-btn" onclick="answer(5,this,'כיתה א׳! תלמד דברים מטורפים ותהיה הכי חכם! 🧠🔥')">כיתה א׳ 📚</button>
+        <button class="option-btn" onclick="answer(5,this,'מסיבה! עוגה! חברים! זה יהיה פצצה! 🎉💥')">המסיבה! 🎉</button>
+        <button class="option-btn" onclick="answer(5,this,'שיניים חדשות גדולות של גבר! 🦷💪')">שיניים חדשות 🦷</button>
       </div>
       <div class="fairy-response" id="r5" style="display:none"></div>
     </div>
 
-    <!-- Q6: free text -->
+    <!-- Q6: Dream -->
     <div class="question-card" id="q6">
-      <div class="question-label"><span class="question-num">6</span> ספר לפיית השיניים סוד! 🤫 (רק היא תשמע)</div>
+      <div class="question-label"><span class="question-num">6</span> ספר לפייה סוד - מה החלום הכי גדול שלך? 🤫🌟</div>
       <input type="text" class="text-input" id="secret-input" placeholder="...כתוב כאן" maxlength="100">
-      <button class="submit-btn" id="secret-btn" onclick="submitSecret()">שלח לפייה 🪄</button>
+      <button class="submit-btn" id="secret-btn" onclick="submitSecret()">שלח! ⚡</button>
       <div class="fairy-response" id="r6" style="display:none"></div>
     </div>
   </div>
 </div>
 
-<!-- Final message after all answered -->
+<!-- Final -->
 <div class="final-msg" id="final">
-  <div class="big-emoji">🧚‍♀️✨🌟</div>
-  <h2>!תודה עברי</h2>
-  <p>פיית השיניים מכירה אותך עכשיו!</p>
-  <p>אתה ילד מדהים, אמיץ ומגניב 💪</p>
-  <p>!כל פעם שתיפול שן - אני אבוא לבקר</p>
-  <p>🦷✨ שמרו על השיניים החדשות ✨🦷</p>
-  <div class="big-emoji">❤️</div>
+  <div class="big-emoji">🏆⚽🔥</div>
+  <h2>!עברי - אתה אלוף</h2>
+  <p>!פיית השיניים מכירה אותך עכשיו</p>
+  <p>אתה גיבור אמיתי - חזק, מגניב ואמיץ 💪🔥</p>
+  <p>!כל פעם שתיפול שן - יש הפתעה</p>
+  <p>🦷⚡ שמור על השיניים החדשות אלוף ⚡🦷</p>
+  <div class="big-emoji">👊💥</div>
   <div class="answer-summary" id="summary"></div>
 </div>
 
-<div class="mountain">
-  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <path d="M0,120 L200,40 L400,90 L600,20 L800,70 L1000,10 L1200,60 L1440,30 L1440,120 Z" fill="rgba(255,255,255,0.05)"/>
-    <path d="M0,120 L300,60 L500,100 L720,40 L900,80 L1100,30 L1440,50 L1440,120 Z" fill="rgba(255,255,255,0.03)"/>
-  </svg>
-</div>
-
 <script>
-// Snow
-const flakes = ['❄','❅','❆','✦','•'];
-for (let i = 0; i < 35; i++) {
+// Floating sport items
+const items = ['⚽','🏀','⛷️','🥊','🏆','🎯','🏅','⚽','🦔','⚽'];
+for (let i = 0; i < 25; i++) {
   const s = document.createElement('div');
-  s.className = 'snow';
-  s.textContent = flakes[Math.floor(Math.random() * flakes.length)];
+  s.className = 'sport-float';
+  s.textContent = items[Math.floor(Math.random() * items.length)];
   s.style.left = Math.random() * 100 + 'vw';
-  s.style.animationDuration = (3 + Math.random() * 5) + 's';
-  s.style.animationDelay = Math.random() * 5 + 's';
-  s.style.fontSize = (0.5 + Math.random() * 1.2) + 'em';
-  s.style.opacity = 0.3 + Math.random() * 0.5;
+  s.style.animationDuration = (4 + Math.random() * 6) + 's';
+  s.style.animationDelay = Math.random() * 6 + 's';
+  s.style.fontSize = (0.8 + Math.random() * 1) + 'em';
+  s.style.opacity = 0.15 + Math.random() * 0.25;
   document.body.appendChild(s);
 }
 
-// Quiz logic
+// Quiz
 let answered = 0;
 const totalQ = 6;
 const answers = {};
@@ -429,18 +428,13 @@ const answers = {};
 function answer(q, btn, response) {
   const card = document.getElementById('q' + q);
   if (card.classList.contains('answered')) return;
-
   card.classList.add('answered');
-  const btns = card.querySelectorAll('.option-btn');
-  btns.forEach(b => { b.disabled = true; });
+  card.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
   btn.classList.add('selected');
-
   answers[q] = btn.textContent;
-
   const r = document.getElementById('r' + q);
   r.textContent = '🧚‍♀️ ' + response;
   r.style.display = 'block';
-
   answered++;
   if (answered >= totalQ) showFinal();
 }
@@ -449,25 +443,20 @@ function submitSecret() {
   const input = document.getElementById('secret-input');
   const val = input.value.trim();
   if (!val) return;
-
   const card = document.getElementById('q6');
   if (card.classList.contains('answered')) return;
-
   card.classList.add('answered');
   input.disabled = true;
   document.getElementById('secret-btn').disabled = true;
-
   answers[6] = val;
-
   const responses = [
-    'וואו! הסוד שלך בטוח איתי! 🤐✨',
-    'פיית השיניים שומרת סודות הכי טוב! 🧚‍♀️🔒',
-    'סוד מדהים! לא אספר לאף אחד! 🤫💫'
+    'חלום מטורף! אתה הולך להגשים את זה! 🔥💪',
+    'פיית השיניים שומרת לך את הסוד! 🤐⚡',
+    'וואו! חלום של אלוף! 🏆✨'
   ];
   const r = document.getElementById('r6');
   r.textContent = '🧚‍♀️ ' + responses[Math.floor(Math.random() * responses.length)];
   r.style.display = 'block';
-
   answered++;
   if (answered >= totalQ) showFinal();
 }
@@ -476,24 +465,12 @@ function showFinal() {
   setTimeout(() => {
     const el = document.getElementById('final');
     el.style.display = 'block';
-
-    // Build summary
-    const labels = {
-      1: '⚽ שחקן אהוב',
-      2: '💥 כוח-על',
-      3: '🏔️ הכי כיף ברומניה',
-      4: '🐾 חיה',
-      5: '🎂 הכי מגניב בגיל 6',
-      6: '🤫 הסוד'
-    };
+    const labels = {1:'⚽ שחקן אהוב',2:'💥 כוח-על',3:'🏔️ הכי כיף ברומניה',4:'🐾 חיה',5:'🔥 הכי אש בגיל 6',6:'🌟 החלום'};
     let html = '';
     for (let i = 1; i <= 6; i++) {
-      if (answers[i]) {
-        html += `<div><span class="label">${labels[i]}:</span> ${answers[i]}</div>`;
-      }
+      if (answers[i]) html += `<div><span class="label">${labels[i]}:</span> ${answers[i]}</div>`;
     }
     document.getElementById('summary').innerHTML = html;
-
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, 800);
 }
