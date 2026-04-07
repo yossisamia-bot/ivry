@@ -9,18 +9,18 @@
 body {
   min-height: 100vh;
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-family: 'Segoe UI', Tahoma, sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
 }
 
-.snow { position: fixed; top: -10px; color: #fff; font-size: 1.2em; animation: fall linear infinite; opacity: 0.8; z-index: 0; }
-@keyframes fall {
-  to { transform: translateY(110vh) rotate(360deg); }
-}
+.snow { position: fixed; top: -10px; color: #fff; font-size: 1.2em; animation: fall linear infinite; opacity: 0.8; z-index: 0; pointer-events: none; }
+@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 
 .card {
   position: relative;
@@ -28,30 +28,24 @@ body {
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(20px);
   border-radius: 24px;
-  padding: 40px 50px;
+  padding: 35px 40px;
   text-align: center;
   border: 1px solid rgba(255,255,255,0.15);
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
   animation: cardIn 0.8s ease-out;
   max-width: 500px;
+  width: 100%;
 }
 @keyframes cardIn {
   from { opacity: 0; transform: scale(0.8) translateY(30px); }
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-.emoji-row {
-  font-size: 2.8em;
-  margin-bottom: 10px;
-  animation: bounce 2s ease-in-out infinite;
-}
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
+.emoji-row { font-size: 2.5em; margin-bottom: 8px; animation: bounce 2s ease-in-out infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
 .name {
-  font-size: 4.5em;
+  font-size: 4em;
   font-weight: 900;
   background: linear-gradient(135deg, #f5af19, #f12711, #f5af19);
   background-size: 200% 200%;
@@ -61,105 +55,20 @@ body {
   margin: 5px 0;
   letter-spacing: 4px;
 }
-@keyframes gradient {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
+@keyframes gradient { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
-.name-he {
-  font-size: 3em;
-  color: #fff;
-  font-weight: 300;
-  opacity: 0.9;
-  margin-bottom: 10px;
-}
+.name-he { font-size: 2.8em; color: #fff; font-weight: 300; opacity: 0.9; margin-bottom: 8px; }
 
-.info {
-  color: rgba(255,255,255,0.6);
-  font-size: 1em;
-  margin-bottom: 15px;
-  line-height: 1.8;
-}
-.info .highlight {
-  color: #f5af19;
-  font-weight: 600;
-}
+.info { color: rgba(255,255,255,0.6); font-size: 0.95em; margin-bottom: 12px; line-height: 1.8; }
+.info .highlight { color: #f5af19; font-weight: 600; }
 
-.subtitle {
-  font-size: 1.3em;
-  color: rgba(255,255,255,0.7);
-  margin-top: 5px;
-}
+.subtitle { font-size: 1.2em; color: rgba(255,255,255,0.7); margin-top: 5px; }
 
-.tooth-section {
-  margin: 18px 0 5px;
-  padding: 15px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 16px;
-}
-.tooth-fairy {
-  font-size: 2.2em;
-  animation: float 3s ease-in-out infinite;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-8px) rotate(5deg); }
-  75% { transform: translateY(-4px) rotate(-5deg); }
-}
-.tooth-msg {
-  font-size: 1.05em;
-  color: #f5d0fe;
-  margin-top: 5px;
-  opacity: 0.9;
-}
-.tooth-count {
-  font-size: 0.85em;
-  color: rgba(255,255,255,0.5);
-  margin-top: 4px;
-}
-
-.family {
-  margin-top: 18px;
-  font-size: 1.6em;
-  color: rgba(255,255,255,0.8);
-  animation: pulse 2.5s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; }
-}
-
-.balls {
-  margin-top: 18px;
-  font-size: 2.2em;
-}
-.balls span {
-  display: inline-block;
-  animation: spin 3s linear infinite;
-  margin: 0 5px;
-}
-.balls span:nth-child(2) { animation-delay: 0.5s; animation-duration: 2.5s; }
-.balls span:nth-child(3) { animation-delay: 1s; animation-duration: 2s; }
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.cool-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  margin: 15px 0;
-}
+.cool-badges { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin: 12px 0; }
 .badge {
-  display: inline-block;
-  padding: 6px 14px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 20px;
-  color: rgba(255,255,255,0.8);
-  font-size: 0.85em;
+  display: inline-block; padding: 5px 12px;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px; color: rgba(255,255,255,0.8); font-size: 0.8em;
   animation: badgeIn 0.6s ease-out backwards;
 }
 .badge:nth-child(1) { animation-delay: 0.3s; }
@@ -168,36 +77,193 @@ body {
 .badge:nth-child(4) { animation-delay: 0.6s; }
 .badge:nth-child(5) { animation-delay: 0.7s; }
 .badge:nth-child(6) { animation-delay: 0.8s; }
-@keyframes badgeIn {
-  from { opacity: 0; transform: translateY(10px); }
+@keyframes badgeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Tooth fairy quiz */
+.fairy-quiz {
+  margin-top: 20px;
+  z-index: 1;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+}
+.fairy-bubble {
+  background: rgba(245,208,254,0.1);
+  border: 1px solid rgba(245,208,254,0.25);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 15px;
+  animation: fadeUp 0.6s ease-out;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.fairy-header {
+  font-size: 1.8em;
+  margin-bottom: 8px;
+}
+.fairy-intro {
+  color: #f5d0fe;
+  font-size: 1em;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+.question-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s;
+}
+.question-card.answered { border-color: rgba(245,175,25,0.4); }
+.question-label {
+  color: #f5d0fe;
+  font-size: 0.95em;
+  margin-bottom: 10px;
+  display: block;
+}
+.question-num {
+  display: inline-block;
+  background: rgba(245,175,25,0.3);
+  color: #f5af19;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  font-size: 0.8em;
+  line-height: 24px;
+  text-align: center;
+  margin-left: 8px;
+}
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.option-btn {
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.option-btn:hover { background: rgba(245,175,25,0.2); border-color: rgba(245,175,25,0.4); transform: scale(1.05); }
+.option-btn.selected {
+  background: rgba(245,175,25,0.3);
+  border-color: #f5af19;
+  color: #f5af19;
+  font-weight: 600;
+}
+.option-btn:disabled { cursor: default; opacity: 0.5; }
+.option-btn.selected:disabled { opacity: 1; }
+
+.fairy-response {
+  margin-top: 8px;
+  padding: 10px;
+  color: #f5d0fe;
+  font-size: 0.85em;
+  animation: fadeUp 0.4s ease-out;
+  line-height: 1.5;
+}
+
+.text-input {
+  width: 100%;
+  padding: 10px 15px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1em;
+  font-family: inherit;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.text-input:focus { border-color: rgba(245,175,25,0.5); }
+.text-input::placeholder { color: rgba(255,255,255,0.3); }
+
+.submit-btn {
+  margin-top: 10px;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #f5af19, #f12711);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.95em;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.submit-btn:hover { transform: scale(1.05); }
+.submit-btn:disabled { opacity: 0.5; cursor: default; }
+
+/* Final message */
+.final-msg {
+  display: none;
+  margin-top: 20px;
+  z-index: 1;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(245,175,25,0.15), rgba(241,39,17,0.15));
+  border: 1px solid rgba(245,175,25,0.3);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  animation: fadeUp 0.8s ease-out;
+}
+.final-msg h2 { color: #f5af19; font-size: 1.5em; margin-bottom: 10px; }
+.final-msg p { color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 8px; }
+.final-msg .big-emoji { font-size: 3em; margin: 15px 0; }
+.answer-summary { color: rgba(255,255,255,0.6); font-size: 0.85em; margin-top: 12px; text-align: right; }
+.answer-summary div { margin: 4px 0; }
+.answer-summary .label { color: #f5d0fe; }
+
+.tooth-section {
+  margin: 15px 0 5px; padding: 12px;
+  background: rgba(255,255,255,0.05); border-radius: 16px;
+}
+.tooth-fairy-icon { font-size: 2em; animation: float 3s ease-in-out infinite; }
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(5deg); }
+  75% { transform: translateY(-4px) rotate(-5deg); }
+}
+.tooth-msg { font-size: 1em; color: #f5d0fe; margin-top: 4px; opacity: 0.9; }
+.tooth-count { font-size: 0.8em; color: rgba(255,255,255,0.5); margin-top: 3px; }
+
+.family { margin-top: 15px; font-size: 1.4em; color: rgba(255,255,255,0.8); animation: pulse 2.5s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; } }
+
+.balls { margin-top: 15px; font-size: 2em; }
+.balls span { display: inline-block; animation: spin 3s linear infinite; margin: 0 4px; }
+.balls span:nth-child(2) { animation-delay: 0.5s; animation-duration: 2.5s; }
+.balls span:nth-child(3) { animation-delay: 1s; animation-duration: 2s; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 .birthday-banner {
-  margin-top: 15px;
-  padding: 10px 20px;
+  margin-top: 12px; padding: 8px 18px;
   background: linear-gradient(135deg, rgba(245,175,25,0.2), rgba(241,39,17,0.2));
-  border-radius: 12px;
-  border: 1px solid rgba(245,175,25,0.3);
+  border-radius: 12px; border: 1px solid rgba(245,175,25,0.3);
 }
-.birthday-banner .text {
-  color: #f5d0a9;
-  font-size: 1.1em;
-}
-.birthday-banner .age {
-  font-size: 2em;
-  margin-top: 3px;
-}
+.birthday-banner .text { color: #f5d0a9; font-size: 1em; }
+.birthday-banner .age { font-size: 1.8em; margin-top: 2px; }
 
-.mountain {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  z-index: 0;
-}
+.mountain { position: fixed; bottom: 0; left: 0; right: 0; height: 100px; z-index: 0; pointer-events: none; }
 .mountain svg { width: 100%; height: 100%; }
+
+@media (max-width: 520px) {
+  .card { padding: 25px 20px; }
+  .name { font-size: 3em; }
+  .name-he { font-size: 2.2em; }
+  .fairy-bubble { padding: 18px; }
+}
 </style>
 </head>
 <body>
@@ -222,7 +288,7 @@ body {
   </div>
 
   <div class="tooth-section">
-    <div class="tooth-fairy">🧚‍♀️ ✨ 🦷🦷🦷</div>
+    <div class="tooth-fairy-icon">🧚‍♀️ ✨ 🦷🦷🦷</div>
     <div class="tooth-msg">!פיית השיניים אוהבת אותך</div>
     <div class="tooth-count">3 שיניים כבר נפלו! אלוף!</div>
   </div>
@@ -232,13 +298,105 @@ body {
     <div class="age">🎂 6 🎂</div>
   </div>
 
-  <div class="family">👨‍👩‍👧‍👦 ענבל, אמיר, אחות גדולה ואח גדול</div>
+  <div class="family">👨‍👩‍👧‍👦 ענבל, אמיר, עלמא ואח גדול</div>
 
   <div class="balls">
     <span>⚽</span>
     <span>🎿</span>
     <span>⚽</span>
   </div>
+</div>
+
+<!-- Tooth Fairy Quiz -->
+<div class="fairy-quiz" id="quiz">
+  <div class="fairy-bubble">
+    <div class="fairy-header">🧚‍♀️✨ פיית השיניים שואלת!</div>
+    <div class="fairy-intro">
+      היי עברי! 👋<br>
+      אני פיית השיניים! קיבלתי 3 שיניים ממך ועכשיו אני רוצה להכיר אותך טוב יותר...<br>
+      ענה על השאלות שלי! 🪄
+    </div>
+
+    <!-- Q1 -->
+    <div class="question-card" id="q1">
+      <div class="question-label"><span class="question-num">1</span> מי שחקן הכדורגל הכי מגניב בעולם? ⚽</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(1,this,'מבחר מעולה! הוא באמת קוסם עם הכדור! 🪄⚽')">מסי</button>
+        <button class="option-btn" onclick="answer(1,this,'סיוווו! בחרת באלוף! 💪🔥')">רונאלדו</button>
+        <button class="option-btn" onclick="answer(1,this,'אמבפה! מהיר כמו ברק! ⚡')">אמבפה</button>
+        <button class="option-btn" onclick="answer(1,this,'הבחירה שלך מדליקה! 🌟')">אחר</button>
+      </div>
+      <div class="fairy-response" id="r1" style="display:none"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-card" id="q2">
+      <div class="question-label"><span class="question-num">2</span> איזה כוח-על היית רוצה? 💥</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(2,this,'וואו! היית עף מעל טבעון! 🦅')">לעוף</button>
+        <button class="option-btn" onclick="answer(2,this,'נעלם! אף אחד לא יתפוס אותך! 👻')">להיעלם</button>
+        <button class="option-btn" onclick="answer(2,this,'סופר כוח! חזק כמו הענק הירוק! 💪')">סופר כוח</button>
+        <button class="option-btn" onclick="answer(2,this,'מהיר כמו סוניק! 🦔💨')">סופר מהירות</button>
+      </div>
+      <div class="fairy-response" id="r2" style="display:none"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-card" id="q3">
+      <div class="question-label"><span class="question-num">3</span> מה הדבר הכי כיף שעשית ברומניה? 🏔️</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(3,this,'סקי על השלג! אלוף אמיתי! ⛷️❄️')">סקי</button>
+        <button class="option-btn" onclick="answer(3,this,'כדור שלג! מקווה שלא פגעת באבא 🤣')">כדורי שלג</button>
+        <button class="option-btn" onclick="answer(3,this,'אוכל טעים! השוקולד שם מטורף! 🍫')">אוכל טעים</button>
+        <button class="option-btn" onclick="answer(3,this,'הכל היה מדהים! 🌟')">הכל!</button>
+      </div>
+      <div class="fairy-response" id="r3" style="display:none"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-card" id="q4">
+      <div class="question-label"><span class="question-num">4</span> איזה חיה היית רוצה להיות? 🐾</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(4,this,'מלך החיות! שואג! 🦁👑')">אריה</button>
+        <button class="option-btn" onclick="answer(4,this,'נשר! עף גבוה ורואה הכל! 🦅')">נשר</button>
+        <button class="option-btn" onclick="answer(4,this,'דולפין! שוחה וקופץ מהמים! 🐬')">דולפין</button>
+        <button class="option-btn" onclick="answer(4,this,'בחירה מושלמת! 🔥')">אחר</button>
+      </div>
+      <div class="fairy-response" id="r4" style="display:none"></div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-card" id="q5">
+      <div class="question-label"><span class="question-num">5</span> מה הדבר הכי מגניב בלהיות כמעט בן 6? 🎂</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(5,this,'נכון! גדלים והולכים! 📏🚀')">שאני כבר גדול</button>
+        <button class="option-btn" onclick="answer(5,this,'כיתה א׳ מחכה לך! תלמד דברים מטורפים! 📚✨')">בקרוב כיתה א׳</button>
+        <button class="option-btn" onclick="answer(5,this,'מסיבה! עוגה! חברים! 🎉🎈')">המסיבה!</button>
+        <button class="option-btn" onclick="answer(5,this,'שיניים חדשות בדרך! פיית השיניים מאשרת! 🧚‍♀️✅')">שיניים חדשות</button>
+      </div>
+      <div class="fairy-response" id="r5" style="display:none"></div>
+    </div>
+
+    <!-- Q6: free text -->
+    <div class="question-card" id="q6">
+      <div class="question-label"><span class="question-num">6</span> ספר לפיית השיניים סוד! 🤫 (רק היא תשמע)</div>
+      <input type="text" class="text-input" id="secret-input" placeholder="...כתוב כאן" maxlength="100">
+      <button class="submit-btn" id="secret-btn" onclick="submitSecret()">שלח לפייה 🪄</button>
+      <div class="fairy-response" id="r6" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Final message after all answered -->
+<div class="final-msg" id="final">
+  <div class="big-emoji">🧚‍♀️✨🌟</div>
+  <h2>!תודה עברי</h2>
+  <p>פיית השיניים מכירה אותך עכשיו!</p>
+  <p>אתה ילד מדהים, אמיץ ומגניב 💪</p>
+  <p>!כל פעם שתיפול שן - אני אבוא לבקר</p>
+  <p>🦷✨ שמרו על השיניים החדשות ✨🦷</p>
+  <div class="big-emoji">❤️</div>
+  <div class="answer-summary" id="summary"></div>
 </div>
 
 <div class="mountain">
@@ -249,8 +407,9 @@ body {
 </div>
 
 <script>
-const flakes = ['❄', '❅', '❆', '✦', '•'];
-for (let i = 0; i < 40; i++) {
+// Snow
+const flakes = ['❄','❅','❆','✦','•'];
+for (let i = 0; i < 35; i++) {
   const s = document.createElement('div');
   s.className = 'snow';
   s.textContent = flakes[Math.floor(Math.random() * flakes.length)];
@@ -260,6 +419,83 @@ for (let i = 0; i < 40; i++) {
   s.style.fontSize = (0.5 + Math.random() * 1.2) + 'em';
   s.style.opacity = 0.3 + Math.random() * 0.5;
   document.body.appendChild(s);
+}
+
+// Quiz logic
+let answered = 0;
+const totalQ = 6;
+const answers = {};
+
+function answer(q, btn, response) {
+  const card = document.getElementById('q' + q);
+  if (card.classList.contains('answered')) return;
+
+  card.classList.add('answered');
+  const btns = card.querySelectorAll('.option-btn');
+  btns.forEach(b => { b.disabled = true; });
+  btn.classList.add('selected');
+
+  answers[q] = btn.textContent;
+
+  const r = document.getElementById('r' + q);
+  r.textContent = '🧚‍♀️ ' + response;
+  r.style.display = 'block';
+
+  answered++;
+  if (answered >= totalQ) showFinal();
+}
+
+function submitSecret() {
+  const input = document.getElementById('secret-input');
+  const val = input.value.trim();
+  if (!val) return;
+
+  const card = document.getElementById('q6');
+  if (card.classList.contains('answered')) return;
+
+  card.classList.add('answered');
+  input.disabled = true;
+  document.getElementById('secret-btn').disabled = true;
+
+  answers[6] = val;
+
+  const responses = [
+    'וואו! הסוד שלך בטוח איתי! 🤐✨',
+    'פיית השיניים שומרת סודות הכי טוב! 🧚‍♀️🔒',
+    'סוד מדהים! לא אספר לאף אחד! 🤫💫'
+  ];
+  const r = document.getElementById('r6');
+  r.textContent = '🧚‍♀️ ' + responses[Math.floor(Math.random() * responses.length)];
+  r.style.display = 'block';
+
+  answered++;
+  if (answered >= totalQ) showFinal();
+}
+
+function showFinal() {
+  setTimeout(() => {
+    const el = document.getElementById('final');
+    el.style.display = 'block';
+
+    // Build summary
+    const labels = {
+      1: '⚽ שחקן אהוב',
+      2: '💥 כוח-על',
+      3: '🏔️ הכי כיף ברומניה',
+      4: '🐾 חיה',
+      5: '🎂 הכי מגניב בגיל 6',
+      6: '🤫 הסוד'
+    };
+    let html = '';
+    for (let i = 1; i <= 6; i++) {
+      if (answers[i]) {
+        html += `<div><span class="label">${labels[i]}:</span> ${answers[i]}</div>`;
+      }
+    }
+    document.getElementById('summary').innerHTML = html;
+
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 800);
 }
 </script>
 </body>
