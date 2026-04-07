@@ -145,6 +145,31 @@ body {
   to { transform: rotate(360deg); }
 }
 
+.cool-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 15px 0;
+}
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.85em;
+  animation: badgeIn 0.6s ease-out backwards;
+}
+.badge:nth-child(1) { animation-delay: 0.3s; }
+.badge:nth-child(2) { animation-delay: 0.5s; }
+.badge:nth-child(3) { animation-delay: 0.7s; }
+@keyframes badgeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .birthday-banner {
   margin-top: 15px;
   padding: 10px 20px;
@@ -175,13 +200,20 @@ body {
 <body>
 
 <div class="card">
-  <div class="emoji-row">⛷️ ⚽ 🏔️</div>
+  <div class="emoji-row">⛷️ ⚽ 🏔️ 😎</div>
   <div class="name">IVRY</div>
   <div class="name-he">עברי</div>
   <div class="info">
-    <span class="highlight">טבעון</span> 🏡
+    <span class="highlight">טבעון</span> 🏡<br>
+    ✈️ חזר מטיול חלום: 20 יום סקי בבולגריה + איטליה!
   </div>
   <div class="subtitle">!You're awesome</div>
+
+  <div class="cool-badges">
+    <span class="badge">😎 הכי קול בטבעון</span>
+    <span class="badge">🇧🇬🇮🇹 סקי בבולגריה + איטליה</span>
+    <span class="badge">👑 אח גדול בנשמה</span>
+  </div>
 
   <div class="tooth-section">
     <div class="tooth-fairy">🧚‍♀️ ✨ 🦷🦷🦷</div>
