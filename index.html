@@ -434,12 +434,23 @@ body {
     <div class="question-card" id="q1">
       <div class="question-label"><span class="question-num">1</span> מי השחקן הכי חזק בריאל מדריד? ⚽🔥</div>
       <div class="options">
-        <button class="option-btn" onclick="answerWithPhoto(1,this,'רודריגו! שחקן פצצה! 💣⚽ הוא הורס שערים!','celebrate.jpg')">רודריגו 🔥</button>
-        <button class="option-btn" onclick="answerWithPhoto(1,this,'בלינגהאם! אלוף אנגלי בספרד! 🏴󠁧󠁢󠁥󠁮󠁧󠁿💪 הוא מנצח!','celebrate.jpg')">בלינגהאם 💪</button>
+        <button class="option-btn" onclick="answerWithPhoto(1,this,'ויניסיוס! הברזילאי המטורף! 🇧🇷⚽ דריבלים של חייזר!','celebrate.jpg')">ויניסיוס ג׳וניור 🇧🇷</button>
+        <button class="option-btn" onclick="answerWithPhoto(1,this,'בלינגהאם! מלך הקישור! 🏴󠁧󠁢󠁥󠁮󠁧󠁿💪 גולים מטורפים!','celebrate.jpg')">בלינגהאם 💪</button>
         <button class="option-btn" onclick="answerWithPhoto(1,this,'אמבפה! מהיר כמו ברק! ⚡ אי אפשר לתפוס אותו!','celebrate.jpg')">אמבפה ⚡</button>
-        <button class="option-btn" onclick="answerWithPhoto(1,this,'רודריגז/מניסיוס/רודריגל! אתה מכיר את כל הסגל! 🏆','celebrate.jpg')">אחר מהקבוצה</button>
+        <button class="option-btn" onclick="answerWithPhoto(1,this,'רודריגו! צעיר ומסוכן! 🔥⚽ תמיד מבקיע ברגע הנכון!','celebrate.jpg')">רודריגו 🔥</button>
       </div>
       <div class="fairy-response" id="r1" style="display:none"></div>
+    </div>
+
+    <!-- Q1c: More Real Madrid -->
+    <div class="question-card" id="q1c">
+      <div class="question-label"><span class="question-num">⚽</span> ומי עושה את העבודה הקשה? 💪🔥</div>
+      <div class="options">
+        <button class="option-btn" onclick="answerWithPhoto('1c',this,'ולוורדה! הקשר מאורוגוואי! רץ כמו מכונה! 🇺🇾💨','sunglasses.jpg')">ולוורדה 🇺🇾</button>
+        <button class="option-btn" onclick="answerWithPhoto('1c',this,'רודיגר! בלם מפחיד! אף אחד לא עובר! 🇩🇪🧱','sunglasses.jpg')">רודיגר 🇩🇪</button>
+        <button class="option-btn" onclick="answerWithPhoto('1c',this,'כולם ביחד! ריאל מדריד זה קבוצה! 👊🏆','sunglasses.jpg')">כולם! 🏆</button>
+      </div>
+      <div class="fairy-response" id="r1c" style="display:none"></div>
     </div>
 
     <!-- Q1b: Maccabi Haifa -->
@@ -549,7 +560,7 @@ function closeLightbox() {
 
 // Quiz
 let answered = 0;
-const totalQ = 7; // 6 original + 1 maccabi haifa
+const totalQ = 9; // 6 original + maccabi haifa + real madrid extra
 const answers = {};
 
 function answer(q, btn, response) {
@@ -606,9 +617,9 @@ function showFinal() {
   setTimeout(() => {
     const el = document.getElementById('final');
     el.style.display = 'block';
-    const labels = {1:'⚽ ריאל מדריד','1b':'💚 מכבי חיפה',2:'💥 כוח-על',3:'🏔️ הכי כיף ברומניה',4:'🐾 חיה',5:'🔥 הכי אש בגיל 6',6:'🌟 החלום'};
+    const labels = {1:'⚽ ריאל מדריד','1c':'💪 העבודה הקשה','1b':'💚 מכבי חיפה',2:'💥 כוח-על',3:'🏔️ הכי כיף ברומניה',4:'🐾 חיה',5:'🔥 הכי אש בגיל 6',6:'🌟 החלום'};
     let html = '';
-    const keys = [1,'1b',2,3,4,5,6];
+    const keys = [1,'1c','1b',2,3,4,5,6];
     for (const i of keys) {
       if (answers[i]) html += `<div><span class="label">${labels[i]}:</span> ${answers[i]}</div>`;
     }
