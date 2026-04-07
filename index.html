@@ -599,9 +599,10 @@ body {
     <div class="tooth-count">3 שיניים נפלו - רק גיבורים אמיתיים!</div>
   </div>
 
-  <div class="birthday-banner">
-    <div class="text">⏱️ ספירה לאחור ליום הולדת!</div>
-    <div class="age">🏆 6 🏆</div>
+  <div class="birthday-banner" id="bday-banner">
+    <div class="text">⏱️ ספירה לאחור ליום הולדת 6!</div>
+    <div id="countdown" style="font-size:1.4em;font-weight:700;color:#00d4ff;margin-top:6px;direction:ltr;"></div>
+    <div class="age">🏆 25.05.2026 🏆</div>
   </div>
 
   <div class="family">👨‍👩‍👧‍👦 ענבל, אמיר, עלמא ואח גדול</div>
@@ -777,6 +778,25 @@ for (let i = 0; i < 25; i++) {
   s.style.opacity = 0.15 + Math.random() * 0.25;
   document.body.appendChild(s);
 }
+
+// Birthday countdown - May 25, 2026
+function updateCountdown() {
+  const bday = new Date(2026, 4, 25); // May 25, 2026
+  const now = new Date();
+  const diff = bday - now;
+  if (diff <= 0) {
+    document.getElementById('countdown').textContent = '🎉 היום יום הולדת! 🎉';
+    return;
+  }
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const secs = Math.floor((diff % (1000*60)) / 1000);
+  document.getElementById('countdown').textContent =
+    days + ' ימים ' + hours + ' שעות ' + mins + ' דקות ' + secs + ' שניות';
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
 // Lightbox
 function openLightbox(src) {
