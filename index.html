@@ -96,6 +96,25 @@ body {
   to { transform: rotate(360deg); }
 }
 
+.tooth-section {
+  margin: 20px 0 5px;
+}
+.tooth-fairy {
+  font-size: 2.5em;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(5deg); }
+  75% { transform: translateY(-4px) rotate(-5deg); }
+}
+.tooth-msg {
+  font-size: 1.1em;
+  color: #f5d0fe;
+  margin-top: 5px;
+  opacity: 0.9;
+}
+
 .mountain {
   position: fixed;
   bottom: 0;
@@ -114,6 +133,10 @@ body {
   <div class="name">IVRY</div>
   <div class="name-he">עברי</div>
   <div class="subtitle">!You're awesome</div>
+  <div class="tooth-section">
+    <div class="tooth-fairy">🧚‍♀️✨🦷</div>
+    <div class="tooth-msg">!פיית השיניים אוהבת אותך</div>
+  </div>
   <div class="balls">
     <span>⚽</span>
     <span>🎿</span>
