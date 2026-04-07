@@ -242,158 +242,226 @@ body {
 .answer-summary div { margin: 4px 0; }
 .answer-summary .label { color: #b8e6ff; }
 
-/* FIFA Player Card */
+/* FIFA Player Card - Ultimate Team Style */
 .player-card {
   position: relative;
   z-index: 1;
-  max-width: 320px;
+  max-width: 340px;
   width: 100%;
   margin: 0 auto 20px;
-  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #1a1a2e 100%);
-  border-radius: 20px;
+  background: linear-gradient(160deg, #0d0d0d 0%, #1a1a1a 20%, #2a2215 40%, #3d3019 55%, #2a2215 70%, #1a1a1a 85%, #0d0d0d 100%);
+  border-radius: 16px;
   padding: 0;
   overflow: hidden;
-  border: 2px solid rgba(212,175,55,0.5);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.6), 0 0 30px rgba(212,175,55,0.15);
+  border: 2px solid rgba(212,175,55,0.6);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(212,175,55,0.2), inset 0 1px 0 rgba(212,175,55,0.3);
   animation: cardIn 0.8s ease-out;
 }
 .player-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(135deg, transparent 40%, rgba(212,175,55,0.08) 50%, transparent 60%);
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(212,175,55,0.05), transparent, rgba(212,175,55,0.08), transparent);
+  animation: cardShine 6s linear infinite;
   pointer-events: none;
-  animation: cardShine 4s ease-in-out infinite;
 }
-@keyframes cardShine {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+@keyframes cardShine { to { transform: rotate(360deg); } }
+.player-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes shimmer { 0% { left: -100%; } 100% { left: 200%; } }
+
+/* Card inner layout */
+.pc-inner {
+  position: relative;
+  z-index: 1;
 }
 
-.pc-top {
-  position: relative;
-  background: linear-gradient(180deg, rgba(212,175,55,0.15), transparent);
-  padding: 15px 20px 0;
+.pc-header {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: stretch;
+  min-height: 220px;
 }
-.pc-rating {
-  text-align: center;
-}
-.pc-rating-num {
-  font-size: 3em;
-  font-weight: 900;
-  color: #d4af37;
-  line-height: 1;
-  text-shadow: 0 0 20px rgba(212,175,55,0.4);
-}
-.pc-rating-pos {
-  font-size: 0.8em;
-  color: rgba(212,175,55,0.7);
-  letter-spacing: 2px;
-  font-weight: 700;
-}
-.pc-clubs {
+
+/* Left column: rating + clubs */
+.pc-left {
+  width: 80px;
+  padding: 18px 0 18px 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+}
+.pc-rating-num {
+  font-size: 3.2em;
+  font-weight: 900;
+  color: #d4af37;
+  line-height: 1;
+  text-shadow: 0 0 25px rgba(212,175,55,0.5);
+}
+.pc-rating-pos {
+  font-size: 0.75em;
+  color: rgba(212,175,55,0.7);
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 .pc-club {
-  width: 42px; height: 42px;
+  width: 48px; height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.6em;
+  font-size: 0.55em;
   font-weight: 800;
   line-height: 1.1;
   text-align: center;
   border: 2px solid;
+  flex-shrink: 0;
 }
 .pc-club.haifa {
-  background: radial-gradient(circle, #1a5c1a, #0d3d0d);
-  border-color: rgba(0,180,0,0.6);
+  background: radial-gradient(circle, #1a6b1a, #0d3d0d);
+  border-color: rgba(0,200,0,0.6);
   color: #4dff4d;
+  box-shadow: 0 0 12px rgba(0,180,0,0.3);
 }
 .pc-club.madrid {
   background: radial-gradient(circle, #2a2a4a, #1a1a3a);
-  border-color: rgba(255,255,255,0.4);
+  border-color: rgba(255,255,255,0.5);
   color: #fff;
+  box-shadow: 0 0 12px rgba(255,255,255,0.15);
+}
+.pc-nation {
+  font-size: 1.6em;
+  margin-top: 4px;
 }
 
-.pc-photo-wrap {
+/* Photo area - cropped like FIFA */
+.pc-photo-area {
+  flex: 1;
   position: relative;
-  width: 180px; height: 180px;
-  margin: 10px auto;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 .pc-photo {
-  width: 100%; height: 100%;
-  border-radius: 50%;
+  width: 200px;
+  height: 230px;
   object-fit: cover;
   object-position: center top;
-  border: 3px solid rgba(212,175,55,0.5);
-  box-shadow: 0 0 30px rgba(212,175,55,0.25);
+  filter: contrast(1.05) brightness(1.05);
   position: relative;
   z-index: 1;
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
-.pc-photo-ring {
+.pc-photo-bg {
   position: absolute;
-  top: -5px; left: -5px; right: -5px; bottom: -5px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  border-top-color: rgba(212,175,55,0.6);
-  border-right-color: rgba(0,212,255,0.4);
-  animation: ringRotate 4s linear infinite;
+  bottom: 0; left: 0; right: 0;
+  height: 100%;
+  background: radial-gradient(ellipse at center bottom, rgba(212,175,55,0.15), transparent 70%);
+  pointer-events: none;
 }
-@keyframes ringRotate { to { transform: rotate(360deg); } }
 
+/* Name section */
 .pc-name-section {
-  background: linear-gradient(180deg, transparent, rgba(212,175,55,0.1));
-  padding: 10px 20px 15px;
+  background: linear-gradient(180deg, rgba(212,175,55,0.08), rgba(212,175,55,0.15));
+  padding: 12px 20px;
   text-align: center;
+  border-top: 1px solid rgba(212,175,55,0.2);
+  border-bottom: 1px solid rgba(212,175,55,0.1);
 }
 .pc-name {
-  font-size: 2.5em;
+  font-size: 2.2em;
   font-weight: 900;
   color: #fff;
-  letter-spacing: 4px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 0 20px rgba(212,175,55,0.2);
 }
 .pc-name-he {
-  font-size: 1.6em;
-  color: rgba(255,255,255,0.7);
-  font-weight: 300;
+  font-size: 1.3em;
+  color: rgba(212,175,55,0.6);
+  font-weight: 400;
+  letter-spacing: 3px;
 }
 
+/* Stats grid - FIFA style with dividers */
 .pc-stats {
   display: flex;
   justify-content: space-around;
-  padding: 12px 15px;
-  border-top: 1px solid rgba(212,175,55,0.15);
+  padding: 14px 10px;
 }
-.pc-stat { text-align: center; }
+.pc-stat {
+  text-align: center;
+  position: relative;
+  flex: 1;
+}
+.pc-stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 20%; bottom: 20%;
+  width: 1px;
+  background: rgba(212,175,55,0.15);
+}
 .pc-stat-val {
-  font-size: 1.4em;
+  font-size: 1.5em;
   font-weight: 900;
   color: #d4af37;
+  text-shadow: 0 0 8px rgba(212,175,55,0.3);
 }
 .pc-stat-label {
-  font-size: 0.55em;
-  color: rgba(255,255,255,0.4);
+  font-size: 0.5em;
+  color: rgba(255,255,255,0.35);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  margin-top: 2px;
 }
 
-.pc-flag-row {
+.pc-bottom {
   display: flex;
   justify-content: center;
-  gap: 6px;
-  padding-bottom: 15px;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0 14px;
+  font-size: 0.7em;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 1px;
 }
-.pc-flag {
-  font-size: 1.4em;
+.pc-bottom-dot { color: rgba(212,175,55,0.4); }
+
+/* Side team logos - floating on page sides */
+.side-logo {
+  position: fixed;
+  z-index: 0;
+  opacity: 0.06;
+  pointer-events: none;
+  font-size: 8em;
+}
+.side-logo.left-logo {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.side-logo.right-logo {
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.side-logo svg { width: 1em; height: 1em; }
+
+@media (max-width: 768px) {
+  .side-logo { font-size: 5em; opacity: 0.04; }
+  .side-logo.left-logo { left: 5px; }
+  .side-logo.right-logo { right: 5px; }
 }
 
 /* Keep for gallery/quiz/final */
@@ -542,37 +610,49 @@ body {
 <div class="field-line top"></div>
 <div class="field-line bottom"></div>
 
+<!-- Side team logos -->
+<div class="side-logo left-logo">
+  <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#4dff4d" stroke-width="4"/><text x="50" y="38" text-anchor="middle" fill="#4dff4d" font-size="12" font-weight="bold">MACCABI</text><text x="50" y="56" text-anchor="middle" fill="#4dff4d" font-size="16" font-weight="900">HAIFA</text><text x="50" y="76" text-anchor="middle" fill="#4dff4d" font-size="18">⚽</text></svg>
+</div>
+<div class="side-logo right-logo">
+  <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="3"/><text x="50" y="35" text-anchor="middle" fill="#d4af37" font-size="10" font-weight="bold">REAL</text><text x="50" y="52" text-anchor="middle" fill="#fff" font-size="13" font-weight="900">MADRID</text><text x="50" y="72" text-anchor="middle" fill="#d4af37" font-size="10">C.F.</text><text x="50" y="88" text-anchor="middle" fill="#d4af37" font-size="14">👑</text></svg>
+</div>
+
 <!-- FIFA Player Card -->
 <div class="player-card">
-  <div class="pc-top">
-    <div class="pc-rating">
-      <div class="pc-rating-num">99</div>
-      <div class="pc-rating-pos">CF</div>
+  <div class="pc-inner">
+    <div class="pc-header">
+      <div class="pc-left">
+        <div class="pc-rating-num">99</div>
+        <div class="pc-rating-pos">CF</div>
+        <div class="pc-club haifa">מכבי<br>חיפה</div>
+        <div class="pc-club madrid">REAL<br>MADRID</div>
+        <div class="pc-nation">🇮🇱</div>
+      </div>
+      <div class="pc-photo-area">
+        <div class="pc-photo-bg"></div>
+        <img class="pc-photo" src="hero.jpg" alt="IVRI">
+      </div>
     </div>
-    <div class="pc-clubs">
-      <div class="pc-club haifa">מכבי<br>חיפה</div>
-      <div class="pc-club madrid">REAL<br>MADRID</div>
+    <div class="pc-name-section">
+      <div class="pc-name">IVRI</div>
+      <div class="pc-name-he">עברי</div>
     </div>
-  </div>
-  <div class="pc-photo-wrap">
-    <div class="pc-photo-ring"></div>
-    <img class="pc-photo" src="hero.jpg" alt="IVRI">
-  </div>
-  <div class="pc-name-section">
-    <div class="pc-name">IVRI</div>
-    <div class="pc-name-he">עברי</div>
-  </div>
-  <div class="pc-stats">
-    <div class="pc-stat"><div class="pc-stat-val">99</div><div class="pc-stat-label">מהירות</div></div>
-    <div class="pc-stat"><div class="pc-stat-val">98</div><div class="pc-stat-label">דריבל</div></div>
-    <div class="pc-stat"><div class="pc-stat-val">97</div><div class="pc-stat-label">בעיטה</div></div>
-    <div class="pc-stat"><div class="pc-stat-val">99</div><div class="pc-stat-label">כוח</div></div>
-    <div class="pc-stat"><div class="pc-stat-val">96</div><div class="pc-stat-label">הגנה</div></div>
-  </div>
-  <div class="pc-flag-row">
-    <span class="pc-flag">🇮🇱</span>
-    <span class="pc-flag">⚽</span>
-    <span class="pc-flag">🏆</span>
+    <div class="pc-stats">
+      <div class="pc-stat"><div class="pc-stat-val">99</div><div class="pc-stat-label">PAC</div></div>
+      <div class="pc-stat"><div class="pc-stat-val">98</div><div class="pc-stat-label">DRI</div></div>
+      <div class="pc-stat"><div class="pc-stat-val">97</div><div class="pc-stat-label">SHO</div></div>
+      <div class="pc-stat"><div class="pc-stat-val">99</div><div class="pc-stat-label">PHY</div></div>
+      <div class="pc-stat"><div class="pc-stat-val">96</div><div class="pc-stat-label">DEF</div></div>
+      <div class="pc-stat"><div class="pc-stat-val">95</div><div class="pc-stat-label">PAS</div></div>
+    </div>
+    <div class="pc-bottom">
+      <span>ULTIMATE TEAM</span>
+      <span class="pc-bottom-dot">◆</span>
+      <span>ICON</span>
+      <span class="pc-bottom-dot">◆</span>
+      <span>25.05.2020</span>
+    </div>
   </div>
 </div>
 
@@ -601,7 +681,7 @@ body {
 
   <div class="birthday-banner" id="bday-banner">
     <div class="text">⏱️ ספירה לאחור ליום הולדת 6!</div>
-    <div id="countdown" style="font-size:1.4em;font-weight:700;color:#00d4ff;margin-top:6px;direction:ltr;"></div>
+    <div id="countdown" style="font-size:1.4em;font-weight:700;color:#00d4ff;margin-top:6px;direction:rtl;unicode-bidi:plaintext;"></div>
     <div class="age">🏆 25.05.2026 🏆</div>
   </div>
 
@@ -742,6 +822,30 @@ body {
       <div class="fairy-response" id="r5" style="display:none"></div>
     </div>
 
+    <!-- Q5b: Dream Car -->
+    <div class="question-card" id="q5b">
+      <div class="question-label"><span class="question-num">🏎️</span> איזה מכונית ספורט הכי חזקה? 🏎️💨</div>
+      <div class="options">
+        <button class="option-btn" onclick="answerWithPhoto('5b',this,'פרארי אדומה! מהירות מטורפת! 🏎️🔥 vroom vroom!','sunglasses.jpg')">פרארי 🔴</button>
+        <button class="option-btn" onclick="answerWithPhoto('5b',this,'למבורגיני! צהובה וחזקה! 💛⚡ מפלצת כביש!','sunglasses.jpg')">למבורגיני 💛</button>
+        <button class="option-btn" onclick="answerWithPhoto('5b',this,'בוגאטי! הכי מהירה בעולם! 🔵💨 400 קמש!','sunglasses.jpg')">בוגאטי 🔵</button>
+        <button class="option-btn" onclick="answerWithPhoto('5b',this,'פורשה! קלאסית וחזקה! 🖤🏆 בחירה של מלך!','sunglasses.jpg')">פורשה ⚫</button>
+      </div>
+      <div class="fairy-response" id="r5b" style="display:none"></div>
+    </div>
+
+    <!-- Q5c: Design your car -->
+    <div class="question-card" id="q5c">
+      <div class="question-label"><span class="question-num">🎨</span> באיזה צבע היית צובע את המכונית שלך? 🎨</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer('5c',this,'אדום אש! כמו פרארי אמיתית! 🔴🔥')">אדום 🔴</button>
+        <button class="option-btn" onclick="answer('5c',this,'שחור מאט! הכי מגניב בכביש! 🖤😎')">שחור 🖤</button>
+        <button class="option-btn" onclick="answer('5c',this,'ירוק כמו מכבי חיפה! 💚🏎️ מכונית ירוקה!')">ירוק 💚</button>
+        <button class="option-btn" onclick="answer('5c',this,'כחול חשמלי! זורח בלילה! 💙⚡')">כחול 💙</button>
+      </div>
+      <div class="fairy-response" id="r5c" style="display:none"></div>
+    </div>
+
     <!-- Q6: Dream -->
     <div class="question-card" id="q6">
       <div class="question-label"><span class="question-num">6</span> ספר לפייה סוד - מה החלום הכי גדול שלך? 🤫🌟</div>
@@ -809,7 +913,7 @@ function closeLightbox() {
 
 // Quiz
 let answered = 0;
-const totalQ = 9; // 6 original + maccabi haifa + real madrid extra
+const totalQ = 11; // all questions including cars
 const answers = {};
 
 function answer(q, btn, response) {
@@ -866,9 +970,9 @@ function showFinal() {
   setTimeout(() => {
     const el = document.getElementById('final');
     el.style.display = 'block';
-    const labels = {1:'⚽ ריאל מדריד','1c':'💪 העבודה הקשה','1b':'💚 מכבי חיפה',2:'💥 כוח-על',3:'🏔️ הכי כיף ברומניה',4:'🐾 חיה',5:'🔥 הכי אש בגיל 6',6:'🌟 החלום'};
+    const labels = {1:'⚽ ריאל מדריד','1c':'💪 העבודה הקשה','1b':'💚 מכבי חיפה',2:'💥 כוח-על',3:'🏔️ הכי כיף ברומניה',4:'🐾 חיה',5:'🔥 הכי אש בגיל 6','5b':'🏎️ מכונית','5c':'🎨 צבע מכונית',6:'🌟 החלום'};
     let html = '';
-    const keys = [1,'1c','1b',2,3,4,5,6];
+    const keys = [1,'1c','1b',2,3,4,5,'5b','5c',6];
     for (const i of keys) {
       if (answers[i]) html += `<div><span class="label">${labels[i]}:</span> ${answers[i]}</div>`;
     }
