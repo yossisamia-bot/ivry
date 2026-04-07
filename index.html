@@ -242,6 +242,89 @@ body {
 .answer-summary div { margin: 4px 0; }
 .answer-summary .label { color: #b8e6ff; }
 
+/* Hero photo - FIFA card style */
+.hero-photo {
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid rgba(0,212,255,0.5);
+  box-shadow: 0 0 25px rgba(0,212,255,0.3), 0 0 50px rgba(0,212,255,0.1);
+  margin: 0 auto 10px;
+  display: block;
+  animation: heroGlow 3s ease-in-out infinite;
+}
+@keyframes heroGlow {
+  0%, 100% { box-shadow: 0 0 25px rgba(0,212,255,0.3), 0 0 50px rgba(0,212,255,0.1); }
+  50% { box-shadow: 0 0 35px rgba(0,212,255,0.5), 0 0 70px rgba(0,212,255,0.2); }
+}
+
+/* Photo gallery */
+.gallery {
+  margin-top: 20px; z-index: 1; position: relative;
+  max-width: 500px; width: 100%;
+}
+.gallery-title {
+  color: #fff; font-size: 1.3em; text-align: center; margin-bottom: 12px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: transform 0.3s;
+  border: 2px solid rgba(0,212,255,0.15);
+}
+.gallery-item:hover { transform: scale(1.05); border-color: rgba(0,212,255,0.5); }
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.gallery-item.wide {
+  grid-column: span 2;
+  aspect-ratio: 2/1;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.9); z-index: 100;
+  align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.lightbox.active { display: flex; }
+.lightbox img {
+  max-width: 90vw; max-height: 85vh;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0,212,255,0.3);
+}
+.lightbox-close {
+  position: fixed; top: 20px; right: 20px;
+  color: #fff; font-size: 2em; cursor: pointer;
+  background: rgba(0,0,0,0.5); border-radius: 50%;
+  width: 40px; height: 40px; text-align: center; line-height: 38px;
+}
+
+/* Reaction photo on quiz answer */
+.reaction-photo {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  object-fit: cover; object-position: center top;
+  border: 2px solid rgba(0,212,255,0.4);
+  margin: 8px auto 0;
+  display: block;
+  animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+@keyframes popIn {
+  from { transform: scale(0) rotate(-20deg); opacity: 0; }
+  to { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
 /* Field lines decoration */
 .field-line {
   position: fixed; pointer-events: none; z-index: 0;
@@ -265,6 +348,7 @@ body {
 
 <div class="card">
   <div class="top-icons">⚽ 🏆 ⛷️ 😎 🦔</div>
+  <img class="hero-photo" src="hero.jpg" alt="IVRI">
   <div class="name">IVRI</div>
   <div class="name-he">עברי</div>
   <div class="tagline">THE CHAMPION</div>
@@ -283,7 +367,8 @@ body {
 
   <div class="cool-badges">
     <span class="badge">😎 הכי קול בטבעון</span>
-    <span class="badge">⚽ כדורגלן מטורף</span>
+    <span class="badge">⚽ מכבי חיפה 💚</span>
+    <span class="badge">⚽ ריאל מדריד</span>
     <span class="badge">🏗️ מגדל פיזה</span>
     <span class="badge">🦔 SONIC</span>
     <span class="badge">🍫 מכור לשוקולד</span>
@@ -313,6 +398,28 @@ body {
   </div>
 </div>
 
+<!-- Photo Gallery -->
+<div class="gallery">
+  <div class="gallery-title">📸 הגלריה של עברי</div>
+  <div class="gallery-grid">
+    <div class="gallery-item wide" onclick="openLightbox('hero.jpg')"><img src="hero.jpg" alt="פיזה"></div>
+    <div class="gallery-item" onclick="openLightbox('sunglasses.jpg')"><img src="sunglasses.jpg" alt="מגניב"></div>
+    <div class="gallery-item" onclick="openLightbox('celebrate.jpg')"><img src="celebrate.jpg" alt="חוגג"></div>
+    <div class="gallery-item" onclick="openLightbox('pisa2.jpg')"><img src="pisa2.jpg" alt="פיזה 2"></div>
+    <div class="gallery-item" onclick="openLightbox('car.jpg')"><img src="car.jpg" alt="באוטו"></div>
+    <div class="gallery-item" onclick="openLightbox('park.jpg')"><img src="park.jpg" alt="בפארק"></div>
+    <div class="gallery-item" onclick="openLightbox('chocolate.jpg')"><img src="chocolate.jpg" alt="שוקולד"></div>
+    <div class="gallery-item" onclick="openLightbox('chess.jpg')"><img src="chess.jpg" alt="שחמט"></div>
+    <div class="gallery-item" onclick="openLightbox('pisa3.jpg')"><img src="pisa3.jpg" alt="פיזה 3"></div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close">✕</div>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <!-- Quiz -->
 <div class="fairy-quiz" id="quiz">
   <div class="fairy-bubble">
@@ -323,16 +430,27 @@ body {
       תראה לי מה אתה עשוי 💪🔥
     </div>
 
-    <!-- Q1: Football -->
+    <!-- Q1: Football - Real Madrid players he plays with -->
     <div class="question-card" id="q1">
-      <div class="question-label"><span class="question-num">1</span> מי שחקן הכדורגל הכי חזק בעולם? ⚽🔥</div>
+      <div class="question-label"><span class="question-num">1</span> מי השחקן הכי חזק בריאל מדריד? ⚽🔥</div>
       <div class="options">
-        <button class="option-btn" onclick="answer(1,this,'מסי! קוסם עם הרגל! 🪄⚽ הוא מבקיע כמו מכונה!')">מסי 🐐</button>
-        <button class="option-btn" onclick="answer(1,this,'סיוווו! הבחור הזה מכונת גולים! 💪🔥 בחירה של אלוף!')">רונאלדו 💪</button>
-        <button class="option-btn" onclick="answer(1,this,'אמבפה! מהיר כמו ברק! ⚡ אי אפשר לתפוס אותו!')">אמבפה ⚡</button>
-        <button class="option-btn" onclick="answer(1,this,'בחירה מקורית! אתה יודע על כדורגל! 🌟')">מישהו אחר</button>
+        <button class="option-btn" onclick="answerWithPhoto(1,this,'רודריגו! שחקן פצצה! 💣⚽ הוא הורס שערים!','celebrate.jpg')">רודריגו 🔥</button>
+        <button class="option-btn" onclick="answerWithPhoto(1,this,'בלינגהאם! אלוף אנגלי בספרד! 🏴󠁧󠁢󠁥󠁮󠁧󠁿💪 הוא מנצח!','celebrate.jpg')">בלינגהאם 💪</button>
+        <button class="option-btn" onclick="answerWithPhoto(1,this,'אמבפה! מהיר כמו ברק! ⚡ אי אפשר לתפוס אותו!','celebrate.jpg')">אמבפה ⚡</button>
+        <button class="option-btn" onclick="answerWithPhoto(1,this,'רודריגז/מניסיוס/רודריגל! אתה מכיר את כל הסגל! 🏆','celebrate.jpg')">אחר מהקבוצה</button>
       </div>
       <div class="fairy-response" id="r1" style="display:none"></div>
+    </div>
+
+    <!-- Q1b: Maccabi Haifa -->
+    <div class="question-card" id="q1b">
+      <div class="question-label"><span class="question-num">⚽</span> ומי הכי חזק במכבי חיפה? 💚</div>
+      <div class="options">
+        <button class="option-btn" onclick="answerWithPhoto('1b',this,'בחירה של אוהד אמיתי! מכבי חיפה עד הסוף! 💚⚽','sunglasses.jpg')">מוחמד אבו פאני</button>
+        <button class="option-btn" onclick="answerWithPhoto('1b',this,'גולצ׳ין! הקסם הישראלי! 🌟💚','sunglasses.jpg')">דין דוד</button>
+        <button class="option-btn" onclick="answerWithPhoto('1b',this,'בחירה של מכיר! מכבי חיפה 💚🏆','sunglasses.jpg')">מישהו אחר</button>
+      </div>
+      <div class="fairy-response" id="r1b" style="display:none"></div>
     </div>
 
     <!-- Q2: Superpower -->
@@ -395,7 +513,7 @@ body {
 
 <!-- Final -->
 <div class="final-msg" id="final">
-  <div class="big-emoji">🏆⚽🔥</div>
+  <img class="hero-photo" src="hero.jpg" alt="IVRI" style="width:120px;height:120px;">
   <h2>!עברי - אתה אלוף</h2>
   <p>!פיית השיניים מכירה אותך עכשיו</p>
   <p>אתה גיבור אמיתי - חזק, מגניב ואמיץ 💪🔥</p>
@@ -420,9 +538,18 @@ for (let i = 0; i < 25; i++) {
   document.body.appendChild(s);
 }
 
+// Lightbox
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+
 // Quiz
 let answered = 0;
-const totalQ = 6;
+const totalQ = 7; // 6 original + 1 maccabi haifa
 const answers = {};
 
 function answer(q, btn, response) {
@@ -434,6 +561,20 @@ function answer(q, btn, response) {
   answers[q] = btn.textContent;
   const r = document.getElementById('r' + q);
   r.textContent = '🧚‍♀️ ' + response;
+  r.style.display = 'block';
+  answered++;
+  if (answered >= totalQ) showFinal();
+}
+
+function answerWithPhoto(q, btn, response, photo) {
+  const card = document.getElementById('q' + q);
+  if (card.classList.contains('answered')) return;
+  card.classList.add('answered');
+  card.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+  btn.classList.add('selected');
+  answers[q] = btn.textContent;
+  const r = document.getElementById('r' + q);
+  r.innerHTML = '🧚‍♀️ ' + response + '<br><img class="reaction-photo" src="' + photo + '" alt="IVRI">';
   r.style.display = 'block';
   answered++;
   if (answered >= totalQ) showFinal();
@@ -465,9 +606,10 @@ function showFinal() {
   setTimeout(() => {
     const el = document.getElementById('final');
     el.style.display = 'block';
-    const labels = {1:'⚽ שחקן אהוב',2:'💥 כוח-על',3:'🏔️ הכי כיף ברומניה',4:'🐾 חיה',5:'🔥 הכי אש בגיל 6',6:'🌟 החלום'};
+    const labels = {1:'⚽ ריאל מדריד','1b':'💚 מכבי חיפה',2:'💥 כוח-על',3:'🏔️ הכי כיף ברומניה',4:'🐾 חיה',5:'🔥 הכי אש בגיל 6',6:'🌟 החלום'};
     let html = '';
-    for (let i = 1; i <= 6; i++) {
+    const keys = [1,'1b',2,3,4,5,6];
+    for (const i of keys) {
       if (answers[i]) html += `<div><span class="label">${labels[i]}:</span> ${answers[i]}</div>`;
     }
     document.getElementById('summary').innerHTML = html;
