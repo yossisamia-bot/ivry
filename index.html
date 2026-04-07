@@ -748,6 +748,7 @@ body {
       <div class="options">
         <button class="option-btn" onclick="answerWithPhoto('1c',this,'ולוורדה! הקשר מאורוגוואי! רץ כמו מכונה! 🇺🇾💨','sunglasses.jpg')">ולוורדה 🇺🇾</button>
         <button class="option-btn" onclick="answerWithPhoto('1c',this,'רודיגר! בלם מפחיד! אף אחד לא עובר! 🇩🇪🧱','sunglasses.jpg')">רודיגר 🇩🇪</button>
+        <button class="option-btn" onclick="answerWithPhoto('1c',this,'קורטואה! שומר שער ענק! ידיים כמו קירות! 🧤🔒','sunglasses.jpg')">קורטואה 🧤</button>
         <button class="option-btn" onclick="answerWithPhoto('1c',this,'כולם ביחד! ריאל מדריד זה קבוצה! 👊🏆','sunglasses.jpg')">כולם! 🏆</button>
       </div>
       <div class="fairy-response" id="r1c" style="display:none"></div>
@@ -782,19 +783,24 @@ body {
         <button class="option-btn" onclick="answer(2,this,'להיעלם! אף אחד לא יתפוס אותך במחבואים! 👻')">להיעלם 👻</button>
         <button class="option-btn" onclick="answer(2,this,'חזק כמו האלק! שום דבר לא יעצור אותך! 💪💥')">סופר כוח 💪</button>
         <button class="option-btn" onclick="answer(2,this,'מהיר כמו סוניק! זזזזזזז! 🦔💨 אין מי שיתפוס!')">סופר מהירות 🦔</button>
+        <button class="option-btn" onclick="answer(2,this,'ראיית לייזר! שורף הכל במבט! 👀🔥')">ראיית לייזר 👀</button>
+        <button class="option-btn" onclick="answer(2,this,'טלפתיה! קורא מחשבות! אף אחד לא יוכל לשקר לך! 🧠✨')">לקרוא מחשבות 🧠</button>
       </div>
       <div class="fairy-response" id="r2" style="display:none"></div>
     </div>
 
     <!-- Q3: Romania -->
     <div class="question-card" id="q3">
-      <div class="question-label"><span class="question-num">3</span> מה הכי שיגע אותך ברומניה? 🏔️⛷️</div>
-      <div class="options">
-        <button class="option-btn" onclick="answer(3,this,'סקי! גלשת על השלג כמו אלוף אמיתי! ⛷️🔥')">סקי על השלג ⛷️</button>
-        <button class="option-btn" onclick="answer(3,this,'מלחמת כדורי שלג! מקווה שניצחת! ❄️💪')">כדורי שלג ❄️</button>
-        <button class="option-btn" onclick="answer(3,this,'אוכל! השוקולד ברומניה מטורף! 🍫🤤')">אוכל מטורף 🍫</button>
-        <button class="option-btn" onclick="answer(3,this,'הכל! 20 יום של פעולה נון-סטופ! 🌟🔥')">הכל ביחד! 🔥</button>
+      <div class="question-label"><span class="question-num">3</span> מה הכי שיגע אותך ברומניה? 🏔️⛷️ <span style="font-size:0.7em;color:rgba(255,255,255,0.3);">(אפשר לבחור כמה!)</span></div>
+      <div class="options" data-multi="true">
+        <button class="option-btn" onclick="multiAnswer(3,this)">סקי על השלג ⛷️</button>
+        <button class="option-btn" onclick="multiAnswer(3,this)">כדורי שלג ❄️</button>
+        <button class="option-btn" onclick="multiAnswer(3,this)">אוכל מטורף 🍫</button>
+        <button class="option-btn" onclick="multiAnswer(3,this)">המלון 🏨</button>
+        <button class="option-btn" onclick="multiAnswer(3,this)">הנסיעות 🚗</button>
+        <button class="option-btn" onclick="multiAnswer(3,this)">הכל ביחד! 🔥</button>
       </div>
+      <button class="submit-btn" id="multi-submit-3" onclick="submitMulti(3,'הכל נשמע מטורף! טיול חלום! 🏔️🔥')" style="display:none;">אישור ✅</button>
       <div class="fairy-response" id="r3" style="display:none"></div>
     </div>
 
@@ -806,6 +812,8 @@ body {
         <button class="option-btn" onclick="answer(4,this,'זאב! חזק וחכם! רץ עם הלהקה! 🐺💪')">זאב 🐺</button>
         <button class="option-btn" onclick="answer(4,this,'נשר! עף הכי גבוה ורואה הכל! 🦅⚡')">נשר 🦅</button>
         <button class="option-btn" onclick="answer(4,this,'כריש! שולט בים! אף אחד לא מתעסק איתך! 🦈🌊')">כריש 🦈</button>
+        <button class="option-btn" onclick="answer(4,this,'נמר! הכי מהיר על היבשה! 120 קמש! 🐆💨')">נמר 🐆</button>
+        <button class="option-btn" onclick="answer(4,this,'דרקון! שורף אש ועף! אין יותר חזק! 🐉🔥')">דרקון 🐉</button>
       </div>
       <div class="fairy-response" id="r4" style="display:none"></div>
     </div>
@@ -818,6 +826,7 @@ body {
         <button class="option-btn" onclick="answer(5,this,'כיתה א׳! תלמד דברים מטורפים ותהיה הכי חכם! 🧠🔥')">כיתה א׳ 📚</button>
         <button class="option-btn" onclick="answer(5,this,'מסיבה! עוגה! חברים! זה יהיה פצצה! 🎉💥')">המסיבה! 🎉</button>
         <button class="option-btn" onclick="answer(5,this,'שיניים חדשות גדולות של גבר! 🦷💪')">שיניים חדשות 🦷</button>
+        <button class="option-btn" onclick="answer(5,this,'יותר משחקים! פלייסטיישן, FIFA, סוניק! 🎮🔥')">משחקי מחשב 🎮</button>
       </div>
       <div class="fairy-response" id="r5" style="display:none"></div>
     </div>
@@ -830,21 +839,26 @@ body {
         <button class="option-btn" onclick="answerWithPhoto('5b',this,'למבורגיני! צהובה וחזקה! 💛⚡ מפלצת כביש!','sunglasses.jpg')">למבורגיני 💛</button>
         <button class="option-btn" onclick="answerWithPhoto('5b',this,'בוגאטי! הכי מהירה בעולם! 🔵💨 400 קמש!','sunglasses.jpg')">בוגאטי 🔵</button>
         <button class="option-btn" onclick="answerWithPhoto('5b',this,'פורשה! קלאסית וחזקה! 🖤🏆 בחירה של מלך!','sunglasses.jpg')">פורשה ⚫</button>
+        <button class="option-btn" onclick="answerWithPhoto('5b',this,'מקלארן! כמו מכונית פורמולה 1! 🏁🔥','sunglasses.jpg')">מקלארן 🧡</button>
+        <button class="option-btn" onclick="answerWithPhoto('5b',this,'טסלה! חשמלית ומטורפת! ⚡🤖 העתיד כבר פה!','sunglasses.jpg')">טסלה ⚡</button>
       </div>
       <div class="fairy-response" id="r5b" style="display:none"></div>
     </div>
 
     <!-- Q5c: Design your car -->
     <div class="question-card" id="q5c">
-      <div class="question-label"><span class="question-num">🎨</span> באיזה צבע היית צובע את המכונית שלך? 🎨</div>
-      <div class="options">
-        <button class="option-btn" onclick="answer('5c',this,'אדום אש! כמו פרארי אמיתית! 🔴🔥')">אדום 🔴</button>
-        <button class="option-btn" onclick="answer('5c',this,'שחור מאט! הכי מגניב בכביש! 🖤😎')">שחור 🖤</button>
-        <button class="option-btn" onclick="answer('5c',this,'זהב! כמו כרטיס FIFA שלך! 👑✨ מכונית של מלך!')">זהב 👑</button>
-        <button class="option-btn" onclick="answer('5c',this,'כסף כרום! מבריק כמו מראה! 🪞💎 יוקרה!')">כסף 🪞</button>
-        <button class="option-btn" onclick="answer('5c',this,'ירוק כמו מכבי חיפה! 💚🏎️ מכונית ירוקה!')">ירוק 💚</button>
-        <button class="option-btn" onclick="answer('5c',this,'כחול חשמלי! זורח בלילה! 💙⚡')">כחול 💙</button>
+      <div class="question-label"><span class="question-num">🎨</span> באיזה צבעים היית צובע את המכונית? 🎨 <span style="font-size:0.7em;color:rgba(255,255,255,0.3);">(אפשר 2!)</span></div>
+      <div class="options" data-multi="true">
+        <button class="option-btn" onclick="multiAnswer('5c',this)">אדום 🔴</button>
+        <button class="option-btn" onclick="multiAnswer('5c',this)">שחור 🖤</button>
+        <button class="option-btn" onclick="multiAnswer('5c',this)">זהב 👑</button>
+        <button class="option-btn" onclick="multiAnswer('5c',this)">כסף 🪞</button>
+        <button class="option-btn" onclick="multiAnswer('5c',this)">ירוק 💚</button>
+        <button class="option-btn" onclick="multiAnswer('5c',this)">כחול 💙</button>
+        <button class="option-btn" onclick="multiAnswer('5c',this)">לבן ⚪</button>
+        <button class="option-btn" onclick="multiAnswer('5c',this)">ורוד 🩷</button>
       </div>
+      <button class="submit-btn" id="multi-submit-5c" onclick="submitMulti('5c','שילוב צבעים מטורף! המכונית שלך תהיה הכי יפה בכביש! 🏎️✨')" style="display:none;">אישור ✅</button>
       <div class="fairy-response" id="r5c" style="display:none"></div>
     </div>
 
@@ -925,6 +939,33 @@ function answer(q, btn, response) {
   card.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
   btn.classList.add('selected');
   answers[q] = btn.textContent;
+  const r = document.getElementById('r' + q);
+  r.textContent = '🧚‍♀️ ' + response;
+  r.style.display = 'block';
+  answered++;
+  if (answered >= totalQ) showFinal();
+}
+
+// Multi-select
+const multiSelections = {};
+function multiAnswer(q, btn) {
+  const card = document.getElementById('q' + q);
+  if (card.classList.contains('answered')) return;
+  btn.classList.toggle('selected');
+  if (!multiSelections[q]) multiSelections[q] = new Set();
+  const txt = btn.textContent.trim();
+  if (multiSelections[q].has(txt)) multiSelections[q].delete(txt);
+  else multiSelections[q].add(txt);
+  const submitBtn = document.getElementById('multi-submit-' + q);
+  if (submitBtn) submitBtn.style.display = multiSelections[q].size > 0 ? 'inline-block' : 'none';
+}
+function submitMulti(q, response) {
+  const card = document.getElementById('q' + q);
+  if (card.classList.contains('answered')) return;
+  card.classList.add('answered');
+  card.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+  document.getElementById('multi-submit-' + q).disabled = true;
+  answers[q] = [...multiSelections[q]].join(' + ');
   const r = document.getElementById('r' + q);
   r.textContent = '🧚‍♀️ ' + response;
   r.style.display = 'block';
