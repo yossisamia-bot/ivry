@@ -325,6 +325,53 @@ body {
   to { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
+/* Maccabi Haifa themed card */
+.haifa-card {
+  background: linear-gradient(135deg, rgba(0,128,0,0.12), rgba(255,255,255,0.04));
+  border: 1px solid rgba(0,180,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+.haifa-card::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 70% 30%, rgba(0,180,0,0.06), transparent 50%);
+  pointer-events: none;
+}
+.haifa-badge {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.haifa-badge svg { width: 50px; height: 50px; filter: drop-shadow(0 0 8px rgba(0,180,0,0.4)); }
+.haifa-label {
+  color: #4dff4d;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  display: block;
+}
+.haifa-card .option-btn:hover { background: rgba(0,180,0,0.2); border-color: rgba(0,180,0,0.5); }
+.haifa-card .option-btn.selected { background: rgba(0,180,0,0.3); border-color: #4dff4d; color: #4dff4d; }
+.haifa-card .fairy-response { color: #8dff8d; }
+
+/* Real Madrid themed */
+.madrid-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(0,80,160,0.08));
+  border: 1px solid rgba(255,255,255,0.15);
+  position: relative;
+}
+.madrid-label {
+  color: #e0d4ff;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  display: block;
+}
+
 /* Field lines decoration */
 .field-line {
   position: fixed; pointer-events: none; z-index: 0;
@@ -367,7 +414,7 @@ body {
 
   <div class="cool-badges">
     <span class="badge">😎 הכי קול בטבעון</span>
-    <span class="badge">⚽ מכבי חיפה 💚</span>
+    <span class="badge" style="background:rgba(0,180,0,0.12);border-color:rgba(0,180,0,0.3);color:#4dff4d;">⚽ מכבי חיפה 💚</span>
     <span class="badge">⚽ ריאל מדריד</span>
     <span class="badge">🏗️ מגדל פיזה</span>
     <span class="badge">🦔 SONIC</span>
@@ -431,7 +478,8 @@ body {
     </div>
 
     <!-- Q1: Football - Real Madrid players he plays with -->
-    <div class="question-card" id="q1">
+    <div class="question-card madrid-card" id="q1">
+      <span class="madrid-label">REAL MADRID C.F. ⚪</span>
       <div class="question-label"><span class="question-num">1</span> מי השחקן הכי חזק בריאל מדריד? ⚽🔥</div>
       <div class="options">
         <button class="option-btn" onclick="answerWithPhoto(1,this,'ויניסיוס! הברזילאי המטורף! 🇧🇷⚽ דריבלים של חייזר!','celebrate.jpg')">ויניסיוס ג׳וניור 🇧🇷</button>
@@ -443,7 +491,8 @@ body {
     </div>
 
     <!-- Q1c: More Real Madrid -->
-    <div class="question-card" id="q1c">
+    <div class="question-card madrid-card" id="q1c">
+      <span class="madrid-label">REAL MADRID C.F. ⚪</span>
       <div class="question-label"><span class="question-num">⚽</span> ומי עושה את העבודה הקשה? 💪🔥</div>
       <div class="options">
         <button class="option-btn" onclick="answerWithPhoto('1c',this,'ולוורדה! הקשר מאורוגוואי! רץ כמו מכונה! 🇺🇾💨','sunglasses.jpg')">ולוורדה 🇺🇾</button>
@@ -454,12 +503,22 @@ body {
     </div>
 
     <!-- Q1b: Maccabi Haifa -->
-    <div class="question-card" id="q1b">
-      <div class="question-label"><span class="question-num">⚽</span> ומי הכי חזק במכבי חיפה? 💚</div>
+    <div class="question-card haifa-card" id="q1b">
+      <div class="haifa-badge">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="none" stroke="#4dff4d" stroke-width="3"/>
+          <text x="50" y="38" text-anchor="middle" fill="#4dff4d" font-size="14" font-weight="bold">MACCABI</text>
+          <text x="50" y="55" text-anchor="middle" fill="#fff" font-size="16" font-weight="900">HAIFA</text>
+          <text x="50" y="72" text-anchor="middle" fill="#4dff4d" font-size="20">⚽</text>
+        </svg>
+      </div>
+      <span class="haifa-label">מכבי חיפה 💚</span>
+      <div class="question-label"><span class="question-num" style="background:rgba(0,180,0,0.3);color:#4dff4d;">⚽</span> מי האלוף של מכבי חיפה? 💚🏆</div>
       <div class="options">
-        <button class="option-btn" onclick="answerWithPhoto('1b',this,'בחירה של אוהד אמיתי! מכבי חיפה עד הסוף! 💚⚽','sunglasses.jpg')">מוחמד אבו פאני</button>
-        <button class="option-btn" onclick="answerWithPhoto('1b',this,'גולצ׳ין! הקסם הישראלי! 🌟💚','sunglasses.jpg')">דין דוד</button>
-        <button class="option-btn" onclick="answerWithPhoto('1b',this,'בחירה של מכיר! מכבי חיפה 💚🏆','sunglasses.jpg')">מישהו אחר</button>
+        <button class="option-btn" onclick="answerWithPhoto('1b',this,'אבו פאני! שחקן אגדה! 💚⚽ מכבי חיפה עד הסוף!','sunglasses.jpg')">מוחמד אבו פאני 💚</button>
+        <button class="option-btn" onclick="answerWithPhoto('1b',this,'דין דוד! כוכב ישראלי! 🌟💚 מכבי חיפה גאים בו!','sunglasses.jpg')">דין דוד 🌟</button>
+        <button class="option-btn" onclick="answerWithPhoto('1b',this,'אתה מכיר את הסגל! אוהד אמיתי של מכבי חיפה! 💚🏆','sunglasses.jpg')">שחקן אחר 💚</button>
+        <button class="option-btn" onclick="answerWithPhoto('1b',this,'כולם ירוקים! כל הקבוצה ביחד! 💚💚💚','sunglasses.jpg')">כל הקבוצה! 🏆</button>
       </div>
       <div class="fairy-response" id="r1b" style="display:none"></div>
     </div>
