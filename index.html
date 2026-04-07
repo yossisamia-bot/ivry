@@ -242,21 +242,170 @@ body {
 .answer-summary div { margin: 4px 0; }
 .answer-summary .label { color: #b8e6ff; }
 
-/* Hero photo - FIFA card style */
+/* FIFA Player Card */
+.player-card {
+  position: relative;
+  z-index: 1;
+  max-width: 320px;
+  width: 100%;
+  margin: 0 auto 20px;
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #1a1a2e 100%);
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid rgba(212,175,55,0.5);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.6), 0 0 30px rgba(212,175,55,0.15);
+  animation: cardIn 0.8s ease-out;
+}
+.player-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(212,175,55,0.08) 50%, transparent 60%);
+  pointer-events: none;
+  animation: cardShine 4s ease-in-out infinite;
+}
+@keyframes cardShine {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.pc-top {
+  position: relative;
+  background: linear-gradient(180deg, rgba(212,175,55,0.15), transparent);
+  padding: 15px 20px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.pc-rating {
+  text-align: center;
+}
+.pc-rating-num {
+  font-size: 3em;
+  font-weight: 900;
+  color: #d4af37;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(212,175,55,0.4);
+}
+.pc-rating-pos {
+  font-size: 0.8em;
+  color: rgba(212,175,55,0.7);
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+.pc-clubs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.pc-club {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6em;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  border: 2px solid;
+}
+.pc-club.haifa {
+  background: radial-gradient(circle, #1a5c1a, #0d3d0d);
+  border-color: rgba(0,180,0,0.6);
+  color: #4dff4d;
+}
+.pc-club.madrid {
+  background: radial-gradient(circle, #2a2a4a, #1a1a3a);
+  border-color: rgba(255,255,255,0.4);
+  color: #fff;
+}
+
+.pc-photo-wrap {
+  position: relative;
+  width: 180px; height: 180px;
+  margin: 10px auto;
+}
+.pc-photo {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid rgba(212,175,55,0.5);
+  box-shadow: 0 0 30px rgba(212,175,55,0.25);
+  position: relative;
+  z-index: 1;
+}
+.pc-photo-ring {
+  position: absolute;
+  top: -5px; left: -5px; right: -5px; bottom: -5px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: rgba(212,175,55,0.6);
+  border-right-color: rgba(0,212,255,0.4);
+  animation: ringRotate 4s linear infinite;
+}
+@keyframes ringRotate { to { transform: rotate(360deg); } }
+
+.pc-name-section {
+  background: linear-gradient(180deg, transparent, rgba(212,175,55,0.1));
+  padding: 10px 20px 15px;
+  text-align: center;
+}
+.pc-name {
+  font-size: 2.5em;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 4px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+.pc-name-he {
+  font-size: 1.6em;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+}
+
+.pc-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 15px;
+  border-top: 1px solid rgba(212,175,55,0.15);
+}
+.pc-stat { text-align: center; }
+.pc-stat-val {
+  font-size: 1.4em;
+  font-weight: 900;
+  color: #d4af37;
+}
+.pc-stat-label {
+  font-size: 0.55em;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pc-flag-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding-bottom: 15px;
+}
+.pc-flag {
+  font-size: 1.4em;
+}
+
+/* Keep for gallery/quiz/final */
 .hero-photo {
-  width: 150px; height: 150px;
+  width: 120px; height: 120px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
   border: 3px solid rgba(0,212,255,0.5);
-  box-shadow: 0 0 25px rgba(0,212,255,0.3), 0 0 50px rgba(0,212,255,0.1);
+  box-shadow: 0 0 25px rgba(0,212,255,0.3);
   margin: 0 auto 10px;
   display: block;
-  animation: heroGlow 3s ease-in-out infinite;
-}
-@keyframes heroGlow {
-  0%, 100% { box-shadow: 0 0 25px rgba(0,212,255,0.3), 0 0 50px rgba(0,212,255,0.1); }
-  50% { box-shadow: 0 0 35px rgba(0,212,255,0.5), 0 0 70px rgba(0,212,255,0.2); }
 }
 
 /* Photo gallery */
@@ -393,20 +542,41 @@ body {
 <div class="field-line top"></div>
 <div class="field-line bottom"></div>
 
-<div class="card">
-  <div class="top-icons">⚽ 🏆 ⛷️ 😎 🦔</div>
-  <img class="hero-photo" src="hero.jpg" alt="IVRI">
-  <div class="name">IVRI</div>
-  <div class="name-he">עברי</div>
-  <div class="tagline">THE CHAMPION</div>
-
-  <div class="stats-bar">
-    <div class="stat"><div class="stat-value">⚽</div><div class="stat-label">כדורגלן</div></div>
-    <div class="stat"><div class="stat-value">⛷️</div><div class="stat-label">גולש</div></div>
-    <div class="stat"><div class="stat-value">💪</div><div class="stat-label">אלוף</div></div>
-    <div class="stat"><div class="stat-value">🔥</div><div class="stat-label">אש</div></div>
+<!-- FIFA Player Card -->
+<div class="player-card">
+  <div class="pc-top">
+    <div class="pc-rating">
+      <div class="pc-rating-num">99</div>
+      <div class="pc-rating-pos">CF</div>
+    </div>
+    <div class="pc-clubs">
+      <div class="pc-club haifa">מכבי<br>חיפה</div>
+      <div class="pc-club madrid">REAL<br>MADRID</div>
+    </div>
   </div>
+  <div class="pc-photo-wrap">
+    <div class="pc-photo-ring"></div>
+    <img class="pc-photo" src="hero.jpg" alt="IVRI">
+  </div>
+  <div class="pc-name-section">
+    <div class="pc-name">IVRI</div>
+    <div class="pc-name-he">עברי</div>
+  </div>
+  <div class="pc-stats">
+    <div class="pc-stat"><div class="pc-stat-val">99</div><div class="pc-stat-label">מהירות</div></div>
+    <div class="pc-stat"><div class="pc-stat-val">98</div><div class="pc-stat-label">דריבל</div></div>
+    <div class="pc-stat"><div class="pc-stat-val">97</div><div class="pc-stat-label">בעיטה</div></div>
+    <div class="pc-stat"><div class="pc-stat-val">99</div><div class="pc-stat-label">כוח</div></div>
+    <div class="pc-stat"><div class="pc-stat-val">96</div><div class="pc-stat-label">הגנה</div></div>
+  </div>
+  <div class="pc-flag-row">
+    <span class="pc-flag">🇮🇱</span>
+    <span class="pc-flag">⚽</span>
+    <span class="pc-flag">🏆</span>
+  </div>
+</div>
 
+<div class="card">
   <div class="info">
     <span class="highlight">טבעון</span> 🏡<br>
     ✈️ חזר מטיול חלום: 20 יום סקי ברומניה + איטליה!
